@@ -1,0 +1,20 @@
+{
+    "data":[
+        {
+            "id":1,
+            "image":"https://th.bing.com/th/id/OIP.tGdSq9bToLMS4rnMhZWtDgHaHa?pid=ImgDet&rs=1",
+            "name":"suyog",
+            "address":"dhankuta",
+            "post":"CEO",
+            "status":"available"
+        },
+        {
+            "id":2,
+            "image":"https://th.bing.com/th/id/OIP.tGdSq9bToLMS4rnMhZWtDgHaHa?pid=ImgDet&rs=1",
+            "name":"aauysh",
+            "address":"dharan",
+            "post":"trainee",
+            "status":"active"
+        }
+    ]
+}
