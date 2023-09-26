@@ -4,9 +4,9 @@ export default function Table({ data }) {
   return (
     <div>
       <div>
-        <div className="h-[83vh]">
-          <div className="overflow-x-auto">
-            <table className="table">
+        <div className="h-[75vh] lg:h-[83vh] overflow-y-scroll">
+          <div className="overflow-x-auto ">
+            <table className="table table-zebra">
               <thead>
                 <tr className="text-base">
                   <th className="w-3"></th>
@@ -16,7 +16,7 @@ export default function Table({ data }) {
                   <th>&nbsp;</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody >
                 {data.map((obj, index) => (
                   <tr className="hover cursor-pointer" key={obj.id}>
                     <th className="text-xl">{index + 1}</th>
