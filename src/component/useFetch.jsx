@@ -17,10 +17,10 @@ export default function useFetch(url,option=null) {
         }
     }
     useEffect(()=>{
-        setTimeout(() => {
+        
             
             fetchData(url,option)
-        }, 3000);
+        
     },[url])
     return {data,error,pending}
 

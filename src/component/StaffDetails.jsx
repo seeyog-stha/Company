@@ -1,13 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function StaffDetails() {
+    const navigate=useNavigate()
   return (
     <>
     <div className='w-full h-screen bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] flex items-center justify-center'>
-        <div className='w-11/12 h-[98vh] bg-base-100 lg:p-5 overflow-y-scroll lg:overflow-y-hidden' >
+        <div className='w-11/12 h-[99vh] bg-base-100 lg:p-5 overflow-y-scroll ' >
             {/* for btn  */}
             <div className='flex justify-between'>
-                <button className='btn btn-circle'>❮</button>
+                <button className='btn btn-circle' onClick={()=>{navigate("/Staff")}}>❮</button>
                 <h1 className='text-xl font-bold underline'>Staff Details</h1>
                 <div className='lg:space-x-7 space-x-2'>
                     <button className='btn btn-primary btn-outline'>edit</button>
@@ -26,7 +28,11 @@ export default function StaffDetails() {
                 {/* info section  */}
                 <div className='w-2/3 mt-10 lg:mt-0'>
                     {/* basic info  */}
-                    <div className='text-xl'>
+                    <div className='text-lg'>
+                        <div className='flex'>
+                            <h5 className='font-bold mr-3'>Employee code:</h5>
+                            <p >lajlj</p>
+                        </div>
                         <div className='flex'>
                             <h5 className='font-bold mr-3'>Name:</h5>
                             <p >lajlj</p>

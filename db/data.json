@@ -16,5 +16,11 @@
             "post":"trainee",
             "status":"active"
         }
+    ],
+    "blog":[
+        {
+            "head":"these is heading ",
+            "body":"these is for the body"
+        }
     ]
 }

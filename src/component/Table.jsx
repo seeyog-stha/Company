@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Table({ data }) {
   return (
@@ -18,6 +19,7 @@ export default function Table({ data }) {
               </thead>
               <tbody >
                 {data.map((obj, index) => (
+                  
                   <tr className="hover cursor-pointer" key={obj.id}>
                     <th className="text-xl">{index + 1}</th>
                     <td>
@@ -48,7 +50,9 @@ export default function Table({ data }) {
                     </td>
                     {/* details  */}
                     <td>
+                      <Link to={`/Staff/${obj.id}`}>
                       <button className="btn btn-ghost btn-xs">details</button>
+                      </Link>
                     </td>
                   </tr>
                 ))}

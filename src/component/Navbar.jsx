@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
  
@@ -28,20 +29,22 @@ export default function Navbar(props) {
               tabIndex={0}
               className="dropdown-content menu shadow bg-base-100 mt-2 w-[95vw] p-3 z-10 rounded-box flex items-center space-y-3"
             >
-              <li>home</li>
-              <li>about</li>
-              <li>staff</li>
+              <li><Link to="/">home</Link></li>
+              <li><Link to="/">about</Link></li>
+              <li><Link to="/Staff">staff</Link></li>
+              <li><Link>Contact us</Link></li>
             </ul>
           </div>
           {/*  company logo */}
-          <a href="/">
+          <Link to="/">
             <img src="logo.png" alt="logo" className="h-12" />
-          </a>
+          </Link>
         </div>
         {/* right part of my navbar  */}
         <div className="navbar-end ">
           <ul className="gap-x-10 hidden lg:flex">
-            <li className="btn-ghost btn ">
+            <Link to="/">
+            <li className="btn-ghost btn "> 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -58,12 +61,15 @@ export default function Navbar(props) {
               </svg>
               home
             </li>
-            <li className="btn-ghost btn ">about</li>
+            </Link>
+            <li className="btn-ghost btn "><Link to="/">about</Link></li>
+              <Link to="/Staff">
             <li className="btn-ghost btn ">
               staff
               <span className="badge badge-xs badge-info"></span>
             </li>
-            <li className="btn-ghost btn ">contact us</li>
+              </Link>
+            <li className="btn-ghost btn "><Link to="/">contact us</Link></li>
           </ul>
           <label className="swap swap-rotate ml-12">
             {/* this hidden checkbox controls the state */}
