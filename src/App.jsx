@@ -1,11 +1,10 @@
 import { useState } from "react";
-import Navbar from "./component/Navbar";
-import Footer from "./component/Footer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../Pages/Home";
 import StaffPage from "../Pages/StaffPage";
 import StaffDetails from "./component/StaffDetails";
-import Layout from "./component/Layout";
+import Layout from "../Pages/Layout";
+import Create from "./component/Create";
 function App() {
   const [theme, setTheme] = useState("light");
  
@@ -23,6 +22,7 @@ function App() {
             <Route path="/Staff" element={<StaffPage />}></Route>
             </Route>
             <Route path="/Staff/:id" element={<StaffDetails/>}></Route>
+            <Route path="/Staff/Create" element={<Create></Create>}></Route>
           </Routes>
           
         </BrowserRouter>

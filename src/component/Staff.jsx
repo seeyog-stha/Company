@@ -1,6 +1,7 @@
 import React from "react";
 import useFetch from "./useFetch";
 import Table from "./Table";
+import { Link } from "react-router-dom";
 
 export default function Staff() {
   const { data, pending, error } = useFetch("http://localhost:8000/data");
@@ -56,7 +57,9 @@ export default function Staff() {
             </div>
             {/* rigth search  */}
             <div className="order-first lg:order-last flex">
-              <div className="btn btn-sm bg-green-700 mr-10 my-auto text-base-200">+create</div>
+              <div className="btn btn-sm bg-green-700 mr-10 my-auto text-base-200">
+                <Link to="/Staff/Create">+create</Link>
+              </div>
               <div className="join my-1">
                 <input
                   type="text"

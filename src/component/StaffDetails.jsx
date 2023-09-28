@@ -1,8 +1,13 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
+import useFetch from './useFetch'
+import { useNavigate,useParams } from 'react-router-dom'
 
 export default function StaffDetails() {
+    
+    const {id}=useParams()
     const navigate=useNavigate()
+    const {data,pending,error}=useFetch("http://localhost:8000/data/"+id)
+    console.log(data,pending,error)
   return (
     <>
     <div className='w-full h-screen bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] flex items-center justify-center'>
@@ -17,58 +22,64 @@ export default function StaffDetails() {
                 </div>
             </div>
             {/* for staff info  */}
-            <div className='flex justify-between flex-col lg:flex-row items-center lg:items-start'>
+            <div className="flex justify-center">
+            {pending && (
+              <span className="loading loading-dots loading-lg m-auto"></span>
+            )}
+          </div>
+          {error && <h1>{error}</h1>}
+           { data&&<div className='flex justify-between flex-col lg:flex-row items-center lg:items-start'>
                 {/* image section  */}
                 
-                <div className='avatar online lg:h-44 mt-9 lg:ml-7'>
+                <div className={`avatar ${data.status=="active"? "online":"offline"} lg:h-44 mt-9 lg:scroll-ml-7`}>
                     <div className='lg:w-44 rounded-full ring '>
-                        <img src="https://image.shutterstock.com/image-photo/official-photo-booth-portrait-woman-260nw-303266858.jpg" alt="" />
+                        <img src={data.image} alt="" />
                     </div>
                 </div>
                 {/* info section  */}
                 <div className='w-2/3 mt-10 lg:mt-0'>
                     {/* basic info  */}
-                    <div className='text-lg'>
+                    <div className='text-lg '>
                         <div className='flex'>
                             <h5 className='font-bold mr-3'>Employee code:</h5>
-                            <p >lajlj</p>
+                            <p >{data.code}</p>
                         </div>
-                        <div className='flex'>
+                        <div className='flex capitalize'>
                             <h5 className='font-bold mr-3'>Name:</h5>
-                            <p >lajlj</p>
+                            <p >{data.name}</p>
                         </div>
-                        <div className='flex'>
+                        <div className='flex capitalize'>
                             <h5 className='font-bold mr-3'>Gender:</h5>
-                            <p >lajlj</p>
+                            <p >{data.gender}</p>
                         </div>
                         <div className='flex'>
                             <h5 className='font-bold mr-3'>Date of birth:</h5>
-                            <p >lajlj</p>
+                            <p >{data.dob}</p>
                         </div>
-                        <div className='flex'>
+                        <div className='flex capitalize'>
                             <h5 className='font-bold mr-3'>Nationality:</h5>
-                            <p >lajlj</p>
-                        </div> <div className='flex'>
+                            <p >{data.nationality}</p>
+                        </div> <div className='flex capitalize'>
                             <h5 className='font-bold mr-3'>Address:</h5>
-                            <p >lajlj</p>
+                            <p >{data.address}</p>
                         </div> <div className='flex'>
                             <h5 className='font-bold mr-3'>Contact:</h5>
-                            <p >lajlj</p>
+                            <p >{data.contact}</p>
                         </div> <div className='flex'>
                             <h5 className='font-bold mr-3'>E-mail:</h5>
-                            <p >lajlj</p>
+                            <p >{data.email}</p>
                         </div> <div className='flex'>
                             <h5 className='font-bold mr-3'>Started Date:</h5>
-                            <p >lajlj</p>
-                        </div> <div className='flex'>
+                            <p >{data.sdate}</p>
+                        </div> <div className='flex capitalize'>
                             <h5 className='font-bold mr-3'>Post:</h5>
-                            <p >lajlj</p>
-                        </div> <div className='flex'>
+                            <p >{data.post}</p>
+                        </div> <div className='flex capitalize'>
                             <h5 className='font-bold mr-3'>Status:</h5>
-                            <p >lajlj</p>
+                            <p >{data.status}</p>
                         </div> <div className='flex'>
                             <h5 className='font-bold mr-3'>No. of Projects accomplished:</h5>
-                            <p >lajlj</p>
+                            <p >{data.projects}</p>
                         </div>
                 
                     </div>
@@ -76,21 +87,21 @@ export default function StaffDetails() {
                         <p className='underline text-xl font-bold mb-5'> summary</p>
                     <div className='flex justify-evenly flex-col items-center lg:flex-row'>
                         <div>
-                        <div className="radial-progress ring-1 ring-pink-400 text-pink-300" style={{ "--value": "70", "--size": "10rem", "--thickness": "1rem" }}>70%</div>
+                        <div className="radial-progress ring-1 ring-pink-400 text-pink-300" style={{ "--value": `${data.skill}`, "--size": "10rem", "--thickness": "1rem" }}>{data.skill}%</div>
                         <p className='text-center mt-6'>skill set</p>
                         </div>
                         <div>
-                        <div className="radial-progress text-blue-400 ring-1" style={{ "--value": "25", "--size": "10rem", "--thickness": "1rem" }}>1year</div>
+                        <div className="radial-progress text-blue-400 ring-1" style={{ "--value": `${data.experience}*15`, "--size": "10rem", "--thickness": "1rem" }}>{data.experience}year</div>
                         <p className='text-center mt-6'>experience</p>
                         </div>
                         <div>
-                        <div className="radial-progress ring-1 ring-black" style={{ "--value": "50", "--size": "10rem", "--thickness": "1rem" }}>3</div>
+                        <div className="radial-progress ring-1 ring-black" style={{ "--value": `${data.projects}*10`, "--size": "10rem", "--thickness": "1rem" }}>{data.projects}</div>
                         <p className='text-center mt-6'>projects</p>
                         </div>
 
                     </div>
                 </div>
-            </div>
+            </div>}
 
         </div>
 
