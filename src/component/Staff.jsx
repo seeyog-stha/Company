@@ -1,11 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useFetch from "./useFetch";
 import Table from "./Table";
 import { Link } from "react-router-dom";
 
 export default function Staff() {
   const { data, pending, error } = useFetch("http://localhost:8000/data");
-  console.log(data, pending, error);
+  const [check, setCheck] = useState(true);
+  const [simValue, setSimValue] = useState();
+  const [posts, setPost] = useState("all");
+  const [statuss, setStatus] = useState("all");
+  const [search,setSearch]=useState("")
+  
+  // initializing the simulated value to the fetched data
+  if (data && check) {
+    setSimValue(data);
+    setCheck(false);
+  }
+  // sort by post and status
+
+  const sortBy = () => {
+    const lowerCasePosts = posts.toLowerCase();
+    const lowerCaseStatuss = statuss.toLowerCase();
+
+    const filteredData = data.filter((item) => {
+      const lowerCaseStatus = item.status.toLowerCase();
+
+      // Check if the item matches the selected `posts` and `statuss`
+      return (
+        (lowerCasePosts === "all" ||lowerCasePosts === item.post.toLowerCase()) &&
+        (lowerCaseStatuss === "all" || lowerCaseStatuss === lowerCaseStatus)
+     
+      );
+    });
+    setSimValue(filteredData);
+  };
+
+  useEffect(() => {
+    if (data) {
+      sortBy();
+    }
+  }, [posts, statuss]);
+  // function for the search event
+  const handelSearch=()=>{
+    const regexp= new RegExp(search,'i')
+    const filteredData=data.filter((items)=>regexp.test(items.name))
+    setSimValue(filteredData)
+
+  }
   return (
     <>
       <div className="w-full bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] h-screen py-5">
@@ -14,44 +55,36 @@ export default function Staff() {
           <div className="flex justify-between px-4 space-x-5 flex-col lg:flex-row">
             {/* left sort part */}
             <div>
-              <div className="flex items-center order-last lg:order-first">
+              <div className="flex items-center order-last lg:order-first pt-2">
                 <p>Sort by:</p>
-                <div className="flex">
-                  <div className="dropdown dropdown-hover">
-                    <label tabIndex={0} className="btn btn-sm m-1 ">
-                      post
-                    </label>
-                    <ul
-                      tabIndex={0}
-                      className="dropdown-content z-20 menu p-2 shadow bg-base-100 rounded-box w-52"
-                    >
-                      <li>
-                        <a>CEO</a>
-                      </li>
-                      <li>
-                        <a>HR</a>
-                      </li>
-                      <li>
-                        <a>Developer</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="dropdown dropdown-hover">
-                    <label tabIndex={0} className="btn btn-sm m-1">
-                      Status
-                    </label>
-                    <ul
-                      tabIndex={0}
-                      className="dropdown-content z-20 menu p-2 shadow bg-base-100 rounded-box w-52"
-                    >
-                      <li>
-                        <a>Active</a>
-                      </li>
-                      <li>
-                        <a>Available</a>
-                      </li>
-                    </ul>
-                  </div>
+                <div className="flex space-x-5">
+                 <p className="ml-2"> Post</p>
+                  <select
+                    className="select select-info select-sm max-w-xs mx-2"
+                    value={posts}
+                    onChange={(e) => setPost(e.target.value)}
+                  >
+                    <option disabled >
+                      Post
+                    </option>
+                    <option value="all">All</option>
+                    <option value="CEO">CEO</option>
+                    <option value="Developer">Developer</option>
+                    <option value="HR">HR</option>
+                  </select>
+                  <p>Status</p>
+                  <select
+                    className="select select-info select-sm max-w-xs mx-2"
+                    value={statuss}
+                    onChange={(e) => setStatus(e.target.value)}
+                  >
+                    <option disabled>
+                      status
+                    </option>
+                    <option value="all">All</option>
+                    <option value="active">Active</option>
+                    <option value="available">Available</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -65,8 +98,11 @@ export default function Staff() {
                   type="text"
                   placeholder="search"
                   className="join-item input input-bordered input-info w-full max-w-xs rounded-full p-3"
+                  value={search}
+                  onChange={(e)=>setSearch(e.target.value)}
+                  onKeyDown={(e)=>{if(e.key==="Enter"){handelSearch()}}}
                 />
-                <button className="btn join-item rounded-r-full bg-blue-300">
+                <button className="btn join-item rounded-r-full bg-blue-300" onClick={handelSearch}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-8 w-6"
@@ -91,8 +127,25 @@ export default function Staff() {
               <span className="loading loading-dots loading-lg m-auto"></span>
             )}
           </div>
-          {error && <h1>{error}</h1>}
-          {data && <Table data={data}></Table>}
+          {error && (
+            <div className="alert alert-error">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current shrink-0 h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>{error}</span>
+            </div>
+          )}
+          {data && <Table data={simValue}></Table>}
         </div>
       </div>
     </>
