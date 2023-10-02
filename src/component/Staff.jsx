@@ -55,9 +55,9 @@ export default function Staff() {
           <div className="flex justify-between px-4 space-x-5 flex-col lg:flex-row">
             {/* left sort part */}
             <div>
-              <div className="flex items-center order-last lg:order-first pt-2">
+              <div className="flex flex-col lg:flex-row items-center order-last lg:order-first pt-2">
                 <p>Sort by:</p>
-                <div className="flex space-x-5">
+                <div className="flex space-x-1 lg:space-x-5 ">
                  <p className="ml-2"> Post</p>
                   <select
                     className="select select-info select-sm max-w-xs mx-2"

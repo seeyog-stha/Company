@@ -1,107 +1,142 @@
-import React, { useState } from "react";
+import React, { useState }  from 'react'
 import { useNavigate } from "react-router-dom";
 import useFetch from "./useFetch";
 
-export default function Create() {
-  const navigate = useNavigate();
-  const [name, setName] = useState();
-  const [image, setImg] = useState();
-  const [code, setCode] = useState();
-  const [gender, setGender] = useState();
-  const [dob, setDob] = useState();
-  const [nationality, setNationality] = useState("nepal");
-  const [address, setAddress] = useState();
-  const [contact, setContact] = useState();
-  const [email, setEmail] = useState();
-  const [Sdate, setSdate] = useState();
-  const [post, setPost] = useState("Developer");
-  const [status, setStatus] = useState("available");
-  const [check, setCheck] = useState(false);
-  const [projects, setProjects] = useState();
-  const [skill, setSkill] = useState(0);
-  const [experience, setexperience] = useState(3);
-  const [pending, setPending] = useState();
-  const [errorr, setError] = useState();
+export default function Createcomp({data,valueobj}) {
+    const navigate = useNavigate();
+    const [name, setName] = useState();
+    const [image, setImg] = useState();
+    const [code, setCode] = useState();
+    const [gender, setGender] = useState();
+    const [dob, setDob] = useState();
+    const [nationality, setNationality] = useState("nepal");
+    const [address, setAddress] = useState();
+    const [contact, setContact] = useState();
+    const [email, setEmail] = useState();
+    const [sdate, setSdate] = useState();
+    const [post, setPost] = useState("Developer");
+    const [status, setStatus] = useState("available");
+    const [check, setCheck] = useState(false);
+    const [projects, setProjects] = useState();
+    const [skill, setSkill] = useState(0);
+    const [experience, setexperience] = useState(0);
+    const [pending, setPending] = useState();
+    const [errorr, setError] = useState();
+    const [initialdatachk,setInitial]=useState(true)
 
-  const handelImg = async (e) => {
-    const file = e.target.files[0];
-    const base64 = await convertToBase64(file);
-    setImg(base64);
-  };
-  const convertToBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
-  // function to make that checks whether the code exist already or not
-  const handelCode = (e) => {
-    console.log(e.target.value);
-    setCode(e.target.value);
-  };
-  // function for the status
-  const handelcheck = () => {
-    setCheck(!check);
-    const temp = check ? "available" : "active";
-    setStatus(temp);
-  };
-  // function to handel experience
-  const handelExperience = (value) => {
-    if (value == 0) {
-      setexperience(0);
-    } else if (value == 25) {
-      setexperience(1);
-    } else if (value == 50) {
-      setexperience(3);
-    } else if (value == 75) {
-      setexperience(5);
-    } else {
-      setexperience(10);
+    // set the values if data is available
+    if(data&& initialdatachk){
+        setName(data.name)
+        setImg(data.image)
+        setCode(data.code)
+        setGender(data.gender)
+        setDob(data.dob)
+        setNationality(data.nationality)
+        setAddress(data.address)
+        setContact(data.contact)
+        setEmail(data.email)
+        setSdate(data.sdate)
+        setPost(data.post)
+        setStatus(data.status)
+        setProjects(data.projects)
+        setSkill(data.skill)
+        setexperience(data.experience)
+        setInitial(false)
+
+        if(data.status=="active"){setCheck(true)}
+       
     }
-  };
-  const handelSubmit = (e) => {
-    e.preventDefault();
-    const value = {
-      name,
-      image,
-      code,
-      gender,
-      dob,
-      nationality,
-      address,
-      contact,
-      email,
-      Sdate,
-      post,
-      status,
-      projects,
-      skill,
-      experience,
-    };
-    setPending(true);
-    fetch("http://localhost:8000/data", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(value),
-    }).then(()=>{
-      setPending(false)
-      navigate("/Staff")
-    },(error)=>{
-      console.log(error)
-      setPending(false)
-      setError(error.message)
-    })
-  };
 
+    // function for handeling reset 
+    const handelReset=(e)=>{
+        e.preventDefault();
+        setName("")
+        setImg(null)
+        setCode("")
+        setGender(null)
+        setDob("")
+        setNationality("nepal")
+        setAddress("")
+        setContact("")
+        setEmail("")
+        setSdate("")
+        setPost("Developer")
+        setStatus("available")
+        setProjects("")
+        setSkill(0)
+        setexperience(0)
+        setCheck(false)   
+    }
+  
+  
+    const handelImg = async (e) => {
+      const file = e.target.files[0];
+      const base64 = await convertToBase64(file);
+      setImg(base64);
+    };
+    const convertToBase64 = (file) => {
+      return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+        fileReader.onload = () => {
+          resolve(fileReader.result);
+        };
+        fileReader.onerror = (error) => {
+          reject(error);
+        };
+      });
+    };
+    // function to make that checks whether the code exist already or not
+    const handelCode = (e) => {
+      console.log(e.target.value);
+      setCode(e.target.value);
+    };
+    // function for the status
+    const handelcheck = () => {
+      setCheck(!check);
+      const temp = check ? "available" : "active";
+      setStatus(temp);
+    };
+  
+
+   
+    const handelSubmit = (e) => {
+      e.preventDefault();
+      const value = {
+        name,
+        image,
+        code,
+        gender,
+        dob,
+        nationality,
+        address,
+        contact,
+        email,
+        sdate,
+        post,
+        status,
+        projects,
+        skill,
+        experience,
+      };
+      setPending(true);
+      fetch(valueobj.url, {
+        method: valueobj.method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(value),
+      }).then(()=>{
+        console.log("dine")
+        setPending(false)
+        navigate(valueobj.navigate)
+      },(error)=>{
+        console.log(error)
+        setPending(false)
+        setError(error.message)
+      })
+    };
+  console.log(experience)
   return (
-    <>
-    
+    <div>
       <div className="h-screen w-screen  bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] p-2">
         <div className="h-[98vh] w-11/12 mx-auto overflow-y-auto bg-base-100">
           {/* options  */}
@@ -109,7 +144,7 @@ export default function Create() {
             <button
               className="btn btn-circle"
               onClick={() => {
-                navigate("/Staff");
+                navigate(valueobj.navigate);
               }}
             >
               ❮
@@ -135,6 +170,7 @@ export default function Create() {
                   <input
                     type="text"
                     name="name"
+                    value={name}
                     id="name"
                     className="input input-bordered input-primary h-8 "
                     onChange={(e) => {
@@ -160,6 +196,7 @@ export default function Create() {
                     type="text"
                     name="code"
                     id="code"
+                    value={code}
                     className="input input-bordered input-primary h-8 "
                     onChange={(e) => {
                       handelCode(e);
@@ -172,6 +209,7 @@ export default function Create() {
                     type="radio"
                     name="gender"
                     id="male"
+                   checked={gender=="male"}
                     className="radio radio-primary"
                     onChange={() => {
                       setGender("male");
@@ -182,6 +220,7 @@ export default function Create() {
                     type="radio"
                     name="gender"
                     id="female"
+                    checked={gender=="female"}
                     className="radio radio-primary"
                     onChange={() => {
                       setGender("female");
@@ -193,7 +232,8 @@ export default function Create() {
                   <label htmlFor="dob">Date of Birth:</label>
                   <input
                     type="date"
-                    name=""
+                    name="dob"
+                    value={dob}
                     id="dob"
                     className="input input-bordered input-primary h-8"
                     onChange={(e) => {
@@ -206,6 +246,7 @@ export default function Create() {
                   <select
                     name="nationality"
                     id="nationality"
+                    value={nationality}
                     className="select select-primary select-sm w-1/2 max-w-xs "
                     onChange={(e) => {
                       setNationality(e.target.value);
@@ -223,6 +264,7 @@ export default function Create() {
                     type="text"
                     name="address"
                     id="address"
+                    value={address}
                     className="input input-bordered input-primary h-8"
                     onChange={(e) => {
                       setAddress(e.target.value);
@@ -235,6 +277,7 @@ export default function Create() {
                     type="tel"
                     name="contact"
                     id="contact"
+                    value={contact}
                     className="input input-bordered input-primary h-8"
                     onChange={(e) => {
                       setContact(e.target.value);
@@ -247,6 +290,7 @@ export default function Create() {
                     type="email"
                     name="email"
                     id="email"
+                    value={email}
                     className="input input-bordered input-primary h-8"
                     onChange={(e) => {
                       setEmail(e.target.value);
@@ -258,6 +302,7 @@ export default function Create() {
                   <input
                     type="date"
                     id="sdate"
+                    value={sdate}
                     className="input input-bordered input-primary h-8"
                     onChange={(e) => {
                       setSdate(e.target.value);
@@ -269,6 +314,7 @@ export default function Create() {
                   <select
                     name="post"
                     id="post"
+                    value={post}
                     className="select select-primary select-sm w-1/2 max-w-xs "
                     onChange={(e) => {
                       setPost(e.target.value);
@@ -287,7 +333,7 @@ export default function Create() {
                     <input
                       type="checkbox"
                       className="toggle toggle-accent"
-                      value={check}
+                      checked={status=="active"?true:false}
                       onChange={handelcheck}
                     />
                     <p>active</p>
@@ -299,6 +345,7 @@ export default function Create() {
                     type="number"
                     id="project"
                     className="input input-bordered input-primary h-8"
+                    value={projects}
                     onChange={(e) => {
                       setProjects(e.target.value);
                     }}
@@ -330,15 +377,22 @@ export default function Create() {
                     min={0}
                     max="100"
                     className="range range-primary"
-                    step="25"
-                    onChange={(e) => handelExperience(e.target.value)}
+                    step="10"
+                    value={experience*10}
+                    onChange={(e) => setexperience(e.target.value/10)}
                   />
                   <div className="w-full flex justify-between text-xs px-2">
-                    <span>0 years</span>
-                    <span>1+ years</span>
-                    <span>3+ years</span>
-                    <span>5+ years</span>
-                    <span>10+ years</span>
+                    <span>0 yrs</span>
+                    <span>1 yrs</span>
+                    <span>2 yrs</span>
+                    <span>3 yrs</span>
+                    <span>4 yrs</span>
+                    <span>5 yrs</span>
+                    <span>6 yrs</span>
+                    <span>7 yrs</span>
+                    <span>8 yrs</span>
+                    <span>9 yrs</span>
+                    <span>10+ yrs</span>
                   </div>
                 </div>
                 {errorr&&<div className="alert alert-error">
@@ -358,7 +412,7 @@ export default function Create() {
                   <span>{errorr}</span>
                 </div>}
                 <div className="flex gap-3 pt-6 mx-auto justify-center">
-                  <button className="btn btn-primary btn-outline" type="reset">
+                  <button className="btn btn-primary btn-outline" onClick={handelReset}>
                     Reset
                   </button>
                   {!pending && (
@@ -366,7 +420,7 @@ export default function Create() {
                       className="btn btn-secondary btn-outline"
                       type="submit"
                     >
-                      Save changes
+                      {valueobj.name}
                     </button>
                   )}
                   {pending && (
@@ -384,6 +438,6 @@ export default function Create() {
           </div>
         </div>
       </div>
-    </>
-  );
+    </div>
+  )
 }

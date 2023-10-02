@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useFetch from "./useFetch";
 import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function StaffDetails() {
   const [errorr, setError] = useState();
@@ -8,17 +9,21 @@ export default function StaffDetails() {
   const navigate = useNavigate();
   const { data, pending, error } = useFetch("http://localhost:8000/data/" + id);
   console.log(data, pending, error);
-  const handelDelete = () => {
-    fetch("http://localhost:8000/data/" + id, {
-      method: "DELETE",
-    }).then(
-      () => {
-        navigate("/Staff");
-      },
-      (error) => {
-        setError("sorry!! error occured while deleting the record");
-      }
-    );
+  const handelDelete = async () => {
+    const conf = confirm("do you want to delete?");
+
+    if (conf) {
+      await fetch("http://localhost:8000/data/" + id, {
+        method: "DELETE",
+      }).then(
+        () => {
+          navigate("/Staff");
+        },
+        (error) => {
+          setError("sorry!! error occured while deleting the record");
+        }
+      );
+    }
   };
   return (
     <>
@@ -54,7 +59,9 @@ export default function StaffDetails() {
             </button>
             <h1 className="text-xl font-bold underline">Staff Details</h1>
             <div className="lg:space-x-7 space-x-2">
-              <button className="btn btn-primary btn-outline">edit</button>
+              <Link to={`/Staff/Update/${id}`}>
+                <button className="btn btn-primary btn-outline">edit</button>
+              </Link>
               <button
                 className="btn btn-secondary btn-outline"
                 onClick={handelDelete}
@@ -171,7 +178,7 @@ export default function StaffDetails() {
                     <div
                       className="radial-progress ring-1 ring-black"
                       style={{
-                        "--value": `${data.projects}*10`,
+                        "--value": `${data.projects}*5`,
                         "--size": "10rem",
                         "--thickness": "1rem",
                       }}

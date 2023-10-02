@@ -4,7 +4,8 @@ import Home from "../Pages/Home";
 import StaffPage from "../Pages/StaffPage";
 import StaffDetails from "./component/StaffDetails";
 import Layout from "../Pages/Layout";
-import Create from "./component/Create";
+import Create from "../Pages/Create";
+import Update from "../Pages/Update";
 function App() {
   const [theme, setTheme] = useState("light");
  
@@ -23,6 +24,7 @@ function App() {
             </Route>
             <Route path="/Staff/:id" element={<StaffDetails/>}></Route>
             <Route path="/Staff/Create" element={<Create></Create>}></Route>
+            <Route path="/Staff/Update/:id" element={<Update></Update>}></Route>
           </Routes>
           
         </BrowserRouter>
