@@ -7,7 +7,7 @@ export default function Navbar(props) {
   const setTheme=props.setTheme
   return (
     <>
-      <nav className="navbar bg-base-100 ">
+      <nav className="navbar bg-base-100 sticky top-0 z-40 ">
         {/* leftmost part of the navbar  */}
         <div className="navbar-start ">
           {/* dropdown menu that appears only on small screen  */}

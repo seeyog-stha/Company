@@ -9,8 +9,8 @@ export default function Staff() {
   const [simValue, setSimValue] = useState();
   const [posts, setPost] = useState("all");
   const [statuss, setStatus] = useState("all");
-  const [search,setSearch]=useState("")
-  
+  const [search, setSearch] = useState("");
+
   // initializing the simulated value to the fetched data
   if (data && check) {
     setSimValue(data);
@@ -27,9 +27,9 @@ export default function Staff() {
 
       // Check if the item matches the selected `posts` and `statuss`
       return (
-        (lowerCasePosts === "all" ||lowerCasePosts === item.post.toLowerCase()) &&
+        (lowerCasePosts === "all" ||
+          lowerCasePosts === item.post.toLowerCase()) &&
         (lowerCaseStatuss === "all" || lowerCaseStatuss === lowerCaseStatus)
-     
       );
     });
     setSimValue(filteredData);
@@ -41,16 +41,15 @@ export default function Staff() {
     }
   }, [posts, statuss]);
   // function for the search event
-  const handelSearch=()=>{
-    const regexp= new RegExp(search,'i')
-    const filteredData=data.filter((items)=>regexp.test(items.name))
-    setSimValue(filteredData)
-
-  }
+  const handelSearch = () => {
+    const regexp = new RegExp(search, "i");
+    const filteredData = data.filter((items) => regexp.test(items.name));
+    setSimValue(filteredData);
+  };
   return (
     <>
-      <div className="w-full bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] h-screen py-5">
-        <div className="container w-11/12 h-[98%] bg-base-100 mx-auto">
+      <div className="w-full bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] h-screen py-2">
+        <div className=" w-11/12 h-full bg-base-100 mx-auto">
           {/* options */}
           <div className="flex justify-between px-4 space-x-5 flex-col lg:flex-row">
             {/* left sort part */}
@@ -58,15 +57,13 @@ export default function Staff() {
               <div className="flex flex-col lg:flex-row items-center order-last lg:order-first pt-2">
                 <p>Sort by:</p>
                 <div className="flex space-x-1 lg:space-x-5 ">
-                 <p className="ml-2"> Post</p>
+                  <p className="ml-2"> Post</p>
                   <select
                     className="select select-info select-sm max-w-xs mx-2"
                     value={posts}
                     onChange={(e) => setPost(e.target.value)}
                   >
-                    <option disabled >
-                      Post
-                    </option>
+                    <option disabled>Post</option>
                     <option value="all">All</option>
                     <option value="CEO">CEO</option>
                     <option value="Developer">Developer</option>
@@ -78,9 +75,7 @@ export default function Staff() {
                     value={statuss}
                     onChange={(e) => setStatus(e.target.value)}
                   >
-                    <option disabled>
-                      status
-                    </option>
+                    <option disabled>status</option>
                     <option value="all">All</option>
                     <option value="active">Active</option>
                     <option value="available">Available</option>
@@ -90,19 +85,28 @@ export default function Staff() {
             </div>
             {/* rigth search  */}
             <div className="order-first lg:order-last flex">
-              <div className="btn btn-sm bg-green-700 mr-10 my-auto text-base-200">
-                <Link to="/Staff/Create">+create</Link>
-              </div>
+              <Link to="/Staff/Create">
+                <div className="btn btn-sm bg-green-700 mr-10 my-auto text-base-200 mt-2 ">
+                  +create
+                </div>
+              </Link>
               <div className="join my-1">
                 <input
                   type="text"
                   placeholder="search"
                   className="join-item input input-bordered input-info w-full max-w-xs rounded-full p-3"
                   value={search}
-                  onChange={(e)=>setSearch(e.target.value)}
-                  onKeyDown={(e)=>{if(e.key==="Enter"){handelSearch()}}}
+                  onChange={(e) => setSearch(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handelSearch();
+                    }
+                  }}
                 />
-                <button className="btn join-item rounded-r-full bg-blue-300" onClick={handelSearch}>
+                <button
+                  className="btn join-item rounded-r-full bg-blue-300"
+                  onClick={handelSearch}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-8 w-6"
@@ -145,7 +149,7 @@ export default function Staff() {
               <span>{error}</span>
             </div>
           )}
-          {data && <Table data={simValue}></Table>}
+          {data && <Table data={simValue} setSimValue={setSimValue}></Table>}
         </div>
       </div>
     </>

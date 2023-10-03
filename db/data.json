@@ -19,9 +19,10 @@
       "experience": 4
     },
     {
-      "name": "test2",
+      "id": 2,
       "image": "https://th.bing.com/th/id/OIP.tGdSq9bToLMS4rnMhZWtDgHaHa?pid=ImgDet&rs=1",
       "code": "002",
+      "name": "test2",
       "gender": "male",
       "dob": "2002-03-23",
       "nationality": "nepal",
@@ -29,12 +30,11 @@
       "contact": "98123456",
       "email": "example@gmail.com",
       "sdate": "2020-03-04",
-      "post": "developer",
+      "post": "Developer",
       "status": "active",
-      "projects": "10",
-      "skill": "75",
-      "experience": 5,
-      "id": 2
+      "projects": 6,
+      "skill": 50,
+      "experience": 4
     },
     {
       "id": 3,
