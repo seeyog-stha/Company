@@ -11,7 +11,7 @@ export default function Create() {
   }
   return (
     <>
-     <Createcomp valueobj={valueobj}></Createcomp>
+     <Createcomp valueobj={valueobj} ></Createcomp>
       
     </>
   );

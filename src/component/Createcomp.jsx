@@ -134,7 +134,6 @@ export default function Createcomp({data,valueobj}) {
         setError(error.message)
       })
     };
-  console.log(experience)
   return (
     <div>
       <div className="h-screen w-screen  bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] p-2">
@@ -154,7 +153,7 @@ export default function Createcomp({data,valueobj}) {
           <div className="flex justify-evenly px-4 py-3 flex-col lg:flex-row">
             {/* icon  */}
 
-            <div className="lg:w-1/4 flex  justify-center h-1/2 mt-8 w-full">
+            <div className="lg:w-1/4 flex  justify-center h-1/2 mt-8 w-full ">
               <img src="\icon.png" alt="logo" />
             </div>
             {/* form  */}

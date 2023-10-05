@@ -2,16 +2,16 @@ import React from "react";
 
 export default function Company() {
   return (
-    <div className="w-full lg:p-20">
+    <div className="w-full lg:px-20 py-5">
 
       <h2 className="text-4xl font-bold my-10 text-center">Welcome to Suyog – Your Partner in IT Excellence</h2>
     <div className="flex box-border mx-auto justify-evenly lg:flex-row-reverse flex-col">
       <img
         src="https://www.legalbites.in/wp-content/uploads/2016/09/Company_picture.jpg"
         alt="image"
-        className="w-11/12 lg:h-[60vh] m-auto lg:w-1/3 shadow-lg shadow-gray-500 lg:rotate-12 border border-gray-200 rounded-lg"
+        className="w-11/12 lg:h-[45vh] m-auto lg:w-1/3 shadow-lg shadow-gray-500 lg:rotate-12 border border-gray-200 rounded-lg"
       />
-      <div className="my-5 w-11/12 text-center lg:w-1/2">
+      <div className="my-5 w-11/12 lg:w-1/2">
         <p>
           At Suyog, we believe in the transformative power of technology. Our
           mission is simple yet profound: to provide our customers with the

@@ -7,7 +7,7 @@ export default function Navbar(props) {
   const setTheme=props.setTheme
   return (
     <>
-      <nav className="navbar bg-base-100 sticky top-0 z-40 ">
+      <nav className="navbar bg-base-200 sticky top-0 z-40 ">
         {/* leftmost part of the navbar  */}
         <div className="navbar-start ">
           {/* dropdown menu that appears only on small screen  */}
@@ -29,10 +29,10 @@ export default function Navbar(props) {
               tabIndex={0}
               className="dropdown-content menu shadow bg-base-100 mt-2 w-[95vw] p-3 z-10 rounded-box flex items-center space-y-3"
             >
-              <li><Link to="/">home</Link></li>
-              <li><Link to="/">about</Link></li>
-              <li><Link to="/Staff">staff</Link></li>
-              <li><Link>Contact us</Link></li>
+              <Link to="/"><li>home</li></Link>
+              <Link to="/"><li>about</li></Link>
+              <Link to="/Staff"><li>staff</li></Link>
+              <Link to="/Contact"><li>Contact us</li></Link>
             </ul>
           </div>
           {/*  company logo */}
@@ -41,10 +41,10 @@ export default function Navbar(props) {
           </Link>
         </div>
         {/* right part of my navbar  */}
-        <div className="navbar-end ">
+        <div className="navbar-center " >
           <ul className="gap-x-10 hidden lg:flex">
             <Link to="/">
-            <li className="btn-ghost btn "> 
+            <li className="btn-ghost btn"> 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -59,17 +59,17 @@ export default function Navbar(props) {
                   d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                 />
               </svg>
-              home
+              <p className="font-bold text-lg">home</p>
             </li>
             </Link>
-            <li className="btn-ghost btn "><Link to="/">about</Link></li>
+            <Link to="/"><li className="btn-ghost btn "> <p className="font-bold text-lg">about us</p></li></Link>
               <Link to="/Staff">
             <li className="btn-ghost btn ">
-              staff
+            <p className="font-bold text-lg">staff</p>
               <span className="badge badge-xs badge-info"></span>
             </li>
               </Link>
-            <li className="btn-ghost btn "><Link to="/">contact us</Link></li>
+              <Link to="/Contact"><li className="btn-ghost btn "> <p className="font-bold text-lg">contact us</p></li></Link>
           </ul>
           <label className="swap swap-rotate ml-12">
             {/* this hidden checkbox controls the state */}
