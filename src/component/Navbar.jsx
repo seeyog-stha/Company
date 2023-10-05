@@ -71,7 +71,10 @@ export default function Navbar(props) {
               </Link>
               <Link to="/Contact"><li className="btn-ghost btn "> <p className="font-bold text-lg">contact us</p></li></Link>
           </ul>
-          <label className="swap swap-rotate ml-12">
+          
+        </div>
+        <div className="navbar-end lg:w-20 ">
+        <label className="swap swap-rotate ml-12">
             {/* this hidden checkbox controls the state */}
             <input type="checkbox" />
 
