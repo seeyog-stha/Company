@@ -6,7 +6,7 @@ export default function footer() {
     <div className="footer items-center bg-base-300 px-14 justify-between ">
       <div>
         <Link to="/">
-        <img src="logo.png" alt="logo" className="h-10"/>
+        <img src="image/logo.png" alt="logo" className="h-10"/>
         <p>Innovating the future, one byte at a time.</p>
         </Link>
         

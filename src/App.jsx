@@ -7,6 +7,7 @@ import Layout from "../Pages/Layout";
 import Create from "../Pages/Create";
 import Update from "../Pages/Update";
 import Contact from "../Pages/Contact";
+import About from "../Pages/About";
 function App() {
   const [theme, setTheme] = useState("light");
  
@@ -23,6 +24,7 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/Staff" element={<StaffPage />}></Route>
             <Route path="/Contact" element={<Contact/>}/>
+            <Route path="/About" element={<About/>}/>
             </Route>
             <Route path="/Staff/:id" element={<StaffDetails/>}></Route>
             <Route path="/Staff/Create" element={<Create></Create>}></Route>

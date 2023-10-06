@@ -18,7 +18,7 @@ export default function Carousel() {
     },
     {
       id: 2,
-      img: "empower.jpg",
+      img: "image/empower.jpg",
       title:"Empowering businesses through innovative IT solutions.",
       background:"bg-[#D2B48C]"
 
@@ -59,7 +59,7 @@ export default function Carousel() {
                 className="lg:h-5/6 lg:w-[26%] h-[50%] w-[50%] opacity-80 border border-gray-300 rounded-xl -rotate-12 absolute top-10 lg:left-40 shadow-xl shadow-black  "
               />
               <img
-                src="pinklogo.png"
+                src="image/pinklogo.png"
                 alt="logo"
                 className="w-20 h-7 absolute right-4 bottom-3"
               />
@@ -79,7 +79,7 @@ export default function Carousel() {
         </div>
       </div>
       <div className="flex justify-center hover:invert">
-        <img src="logoline.png" alt="" className="h-10 " />
+        <img src="image/logoline.png" alt="" className="h-10 " />
       </div>
     </>
   );

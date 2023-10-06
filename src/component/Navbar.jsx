@@ -30,14 +30,14 @@ export default function Navbar(props) {
               className="dropdown-content menu shadow bg-base-100 mt-2 w-[95vw] p-3 z-10 rounded-box flex items-center space-y-3"
             >
               <Link to="/"><li>home</li></Link>
-              <Link to="/"><li>about</li></Link>
+              <Link to="/About"><li>about</li></Link>
               <Link to="/Staff"><li>staff</li></Link>
               <Link to="/Contact"><li>Contact us</li></Link>
             </ul>
           </div>
           {/*  company logo */}
           <Link to="/">
-            <img src="logo.png" alt="logo" className="h-12" />
+            <img src="image/logo.png" alt="logo" className="h-12" />
           </Link>
         </div>
         {/* right part of my navbar  */}
@@ -62,7 +62,7 @@ export default function Navbar(props) {
               <p className="font-bold text-lg">home</p>
             </li>
             </Link>
-            <Link to="/"><li className="btn-ghost btn "> <p className="font-bold text-lg">about us</p></li></Link>
+            <Link to="/About"><li className="btn-ghost btn "> <p className="font-bold text-lg">about us</p></li></Link>
               <Link to="/Staff">
             <li className="btn-ghost btn ">
             <p className="font-bold text-lg">staff</p>
