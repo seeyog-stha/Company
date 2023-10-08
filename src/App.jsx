@@ -8,6 +8,7 @@ import Create from "../Pages/Create";
 import Update from "../Pages/Update";
 import Contact from "../Pages/Contact";
 import About from "../Pages/About";
+import Hero from "../Pages/Hero";
 function App() {
   const [theme, setTheme] = useState("light");
  
@@ -18,10 +19,12 @@ function App() {
       {/* bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] h-screen */}
       <div className="font-[poppins] " data-theme={theme}>
         <BrowserRouter>     
+
           <Routes>
+            <Route path="/" element={<Hero/>}/>
             <Route element={<Layout setTheme={setTheme}></Layout>}>
 
-            <Route path="/" element={<Home />}></Route>
+            <Route path="/Home" element={<Home />}></Route>
             <Route path="/Staff" element={<StaffPage />}></Route>
             <Route path="/Contact" element={<Contact/>}/>
             <Route path="/About" element={<About/>}/>

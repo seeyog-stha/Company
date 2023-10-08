@@ -11,7 +11,7 @@ export default function Company() {
         alt="image"
         className="w-11/12 lg:h-[45vh] m-auto lg:w-1/3 shadow-lg shadow-gray-500 lg:rotate-12 border border-gray-200 rounded-lg"
       />
-      <div className="my-5 w-11/12 lg:w-1/2">
+      <div className="my-5 w-11/12 lg:w-1/2 px-4">
         <p>
           At Suyog, we believe in the transformative power of technology. Our
           mission is simple yet profound: to provide our customers with the

@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export default function footer() {
   return (
-    <div className="footer items-center bg-base-300 px-14 justify-between ">
+    <div className="footer items-center bg-base-300 px-14 justify-between py-3">
       <div>
-        <Link to="/">
+        <Link to="/Home">
         <img src="image/logo.png" alt="logo" className="h-10"/>
         <p>Innovating the future, one byte at a time.</p>
         </Link>

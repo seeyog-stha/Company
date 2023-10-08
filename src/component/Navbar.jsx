@@ -29,21 +29,21 @@ export default function Navbar(props) {
               tabIndex={0}
               className="dropdown-content menu shadow bg-base-100 mt-2 w-[95vw] p-3 z-10 rounded-box flex items-center space-y-3"
             >
-              <Link to="/"><li>home</li></Link>
+              <Link to="/Home"><li>home</li></Link>
               <Link to="/About"><li>about</li></Link>
               <Link to="/Staff"><li>staff</li></Link>
               <Link to="/Contact"><li>Contact us</li></Link>
             </ul>
           </div>
           {/*  company logo */}
-          <Link to="/">
+          <Link to="/Home">
             <img src="image/logo.png" alt="logo" className="h-12" />
           </Link>
         </div>
         {/* right part of my navbar  */}
         <div className="navbar-center " >
           <ul className="gap-x-10 hidden lg:flex">
-            <Link to="/">
+            <Link to="/Home">
             <li className="btn-ghost btn"> 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
