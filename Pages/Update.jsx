@@ -2,12 +2,14 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Createcomp from "../src/component/Createcomp";
 import useFetch from "../src/component/useFetch";
+import { SingleDataUrl } from "../Urls/Urlpath";
 export default function Update() {
   const { id } = useParams();
-  const { data, pending, error } = useFetch("http://localhost:8000/data/" + id);
+  const { value, pending, error } = useFetch(SingleDataUrl+ id);
+  console.log(value)
   const valueobj={
     name:"Update",
-    url:"http://localhost:8000/data/" + id,
+    url:SingleDataUrl + id,
     method:"PUT",
     navigate:"/Staff/"+id
   }
@@ -32,7 +34,7 @@ export default function Update() {
           <span>{error}</span>
         </div>
       )}
-      {data&&<Createcomp valueobj={valueobj} data={data}></Createcomp>}
+      {value&&<Createcomp valueobj={valueobj} data={value.data}></Createcomp>}
     </div>
   );
 }

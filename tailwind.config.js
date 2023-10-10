@@ -10,9 +10,9 @@ export default {
           "100%": { transform: "translateX(100vw)",opacity:1},
         },
         Movedown:{
-          "0%": { transform: "translateY(-100vh)"},
+          "0%": { top:"-100vh"},
         
-          "100%": { transform: "translateY(28%)"},
+          "100%": { top:"8rem"},
         }
       },
       animation: {

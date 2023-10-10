@@ -1,28 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useFetch from "./useFetch";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import { SingleDataUrl } from "../../Urls/Urlpath";
+import ChangeDAta from "./ChangeDAta";
 export default function StaffDetails() {
   const [errorr, setError] = useState();
   const { id } = useParams();
   const navigate = useNavigate();
-  const { data, pending, error } = useFetch("http://localhost:8000/data/" + id);
-  console.log(data, pending, error);
+  const { value, pending, error } = useFetch(SingleDataUrl + id);
+  console.log(SingleDataUrl);
+  console.log(value, pending, error);
   const handelDelete = async () => {
     const conf = confirm("do you want to delete?");
 
     if (conf) {
-      await fetch("http://localhost:8000/data/" + id, {
-        method: "DELETE",
-      }).then(
-        () => {
-          navigate("/Staff");
-        },
-        (error) => {
-          setError("sorry!! error occured while deleting the record");
-        }
-      );
+      try {
+        await ChangeDAta(SingleDataUrl + id, "DELETE");
+        navigate("/Staff");
+      } catch (err) {
+        setError("sorry!! error occured while deleting the record" + err);
+      }
     }
   };
   return (
@@ -77,17 +75,17 @@ export default function StaffDetails() {
             )}
           </div>
           {error && <h1>{error}</h1>}
-          {data && (
+          {value && (
             <div className="flex justify-between flex-col lg:flex-row items-center lg:items-start">
               {/* image section  */}
 
               <div
                 className={`avatar ${
-                  data.status == "active" ? "online" : "offline"
+                  value.data.status == "active" ? "online" : "offline"
                 } lg:h-44 mt-9 lg:scroll-ml-7`}
               >
                 <div className="lg:w-44 rounded-full ring ">
-                  <img src={data.image} alt="" />
+                  <img src={value.data.image} alt="" />
                 </div>
               </div>
               {/* info section  */}
@@ -96,53 +94,53 @@ export default function StaffDetails() {
                 <div className="text-lg ">
                   <div className="flex">
                     <h5 className="font-bold mr-3">Employee code:</h5>
-                    <p>{data.code}</p>
+                    <p>{value.data.code}</p>
                   </div>
                   <div className="flex capitalize">
                     <h5 className="font-bold mr-3">Name:</h5>
-                    <p>{data.name}</p>
+                    <p>{value.data.name}</p>
                   </div>
                   <div className="flex capitalize">
                     <h5 className="font-bold mr-3">Gender:</h5>
-                    <p>{data.gender}</p>
+                    <p>{value.data.gender}</p>
                   </div>
                   <div className="flex">
                     <h5 className="font-bold mr-3">Date of birth:</h5>
-                    <p>{data.dob}</p>
+                    <p>{value.data.dob}</p>
                   </div>
                   <div className="flex capitalize">
                     <h5 className="font-bold mr-3">Nationality:</h5>
-                    <p>{data.nationality}</p>
+                    <p>{value.data.nationality}</p>
                   </div>{" "}
                   <div className="flex capitalize">
                     <h5 className="font-bold mr-3">Address:</h5>
-                    <p>{data.address}</p>
+                    <p>{value.data.address}</p>
                   </div>{" "}
                   <div className="flex">
                     <h5 className="font-bold mr-3">Contact:</h5>
-                    <p>{data.contact}</p>
+                    <p>{value.data.contact}</p>
                   </div>{" "}
                   <div className="flex">
                     <h5 className="font-bold mr-3">E-mail:</h5>
-                    <p>{data.email}</p>
+                    <p>{value.data.email}</p>
                   </div>{" "}
                   <div className="flex">
                     <h5 className="font-bold mr-3">Started Date:</h5>
-                    <p>{data.sdate}</p>
+                    <p>{value.data.sdate}</p>
                   </div>{" "}
                   <div className="flex capitalize">
                     <h5 className="font-bold mr-3">Post:</h5>
-                    <p>{data.post}</p>
+                    <p>{value.data.post}</p>
                   </div>{" "}
                   <div className="flex capitalize">
                     <h5 className="font-bold mr-3">Status:</h5>
-                    <p>{data.status}</p>
+                    <p>{value.data.status}</p>
                   </div>{" "}
                   <div className="flex">
                     <h5 className="font-bold mr-3">
                       No. of Projects accomplished:
                     </h5>
-                    <p>{data.projects}</p>
+                    <p>{value.data.projects}</p>
                   </div>
                 </div>
                 {/* chart  */}
@@ -152,12 +150,12 @@ export default function StaffDetails() {
                     <div
                       className="radial-progress ring-1 ring-pink-400 text-pink-300"
                       style={{
-                        "--value": `${data.skill}`,
+                        "--value": `${value.data.skill}`,
                         "--size": "10rem",
                         "--thickness": "1rem",
                       }}
                     >
-                      {data.skill}%
+                      {value.data.skill}%
                     </div>
                     <p className="text-center mt-6">skill set</p>
                   </div>
@@ -165,12 +163,12 @@ export default function StaffDetails() {
                     <div
                       className="radial-progress text-blue-400 ring-1"
                       style={{
-                        "--value": `${data.experience}*10`,
+                        "--value": `${value.data.experience}*10`,
                         "--size": "10rem",
                         "--thickness": "1rem",
                       }}
                     >
-                      {data.experience}year
+                      {value.data.experience}year
                     </div>
                     <p className="text-center mt-6">experience</p>
                   </div>
@@ -178,12 +176,12 @@ export default function StaffDetails() {
                     <div
                       className="radial-progress ring-1 ring-black"
                       style={{
-                        "--value": `${data.projects}*5`,
+                        "--value": `${value.data.projects}*5`,
                         "--size": "10rem",
                         "--thickness": "1rem",
                       }}
                     >
-                      {data.projects}
+                      {value.data.projects}
                     </div>
                     <p className="text-center mt-6">projects</p>
                   </div>

@@ -1,139 +1,146 @@
-import React, { useState }  from 'react'
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useFetch from "./useFetch";
+import ChangeDAta from "./ChangeDAta";
+import { imageDb } from "./ImageConfig";
+import {getDownloadURL, listAll, ref, uploadBytes} from "firebase/storage"
+import {v4 } from "uuid"
+export default function Createcomp({ data, valueobj }) {
+  const navigate = useNavigate();
+  const [name, setName] = useState();
+  const [tempimg,setTempimg]=useState();
+  const [image, setImg] = useState();
+  const [code, setCode] = useState();
+  const [gender, setGender] = useState();
+  const [dob, setDob] = useState();
+  const [nationality, setNationality] = useState("nepal");
+  const [address, setAddress] = useState();
+  const [contact, setContact] = useState();
+  const [email, setEmail] = useState();
+  const [sdate, setSdate] = useState();
+  const [post, setPost] = useState("Developer");
+  const [status, setStatus] = useState("available");
+  const [check, setCheck] = useState(false);
+  const [projects, setProjects] = useState();
+  const [skill, setSkill] = useState(0);
+  const [experience, setexperience] = useState(0);
+  const [pending, setPending] = useState();
+  const [errorr, setError] = useState();
+  
 
-export default function Createcomp({data,valueobj}) {
-    const navigate = useNavigate();
-    const [name, setName] = useState();
-    const [image, setImg] = useState();
-    const [code, setCode] = useState();
-    const [gender, setGender] = useState();
-    const [dob, setDob] = useState();
-    const [nationality, setNationality] = useState("nepal");
-    const [address, setAddress] = useState();
-    const [contact, setContact] = useState();
-    const [email, setEmail] = useState();
-    const [sdate, setSdate] = useState();
-    const [post, setPost] = useState("Developer");
-    const [status, setStatus] = useState("available");
-    const [check, setCheck] = useState(false);
-    const [projects, setProjects] = useState();
-    const [skill, setSkill] = useState(0);
-    const [experience, setexperience] = useState(0);
-    const [pending, setPending] = useState();
-    const [errorr, setError] = useState();
-    const [initialdatachk,setInitial]=useState(true)
+  // set the values if data is available
+ 
+  useEffect(()=>{
+    if(data){
+      setName(data.name);
+      setImg(data.image);
+      setCode(data.code);
+      setGender(data.gender);
+      setDob(data.dob);
+      setNationality(data.nationality);
+      setAddress(data.address);
+      setContact(data.contact);
+      setEmail(data.email);
+      setSdate(data.sdate);
+      setPost(data.post);
+      setStatus(data.status);
+      setProjects(data.projects);
+      setSkill(data.skill);
+      setexperience(data.experience);
 
-    // set the values if data is available
-    if(data&& initialdatachk){
-        setName(data.name)
-        setImg(data.image)
-        setCode(data.code)
-        setGender(data.gender)
-        setDob(data.dob)
-        setNationality(data.nationality)
-        setAddress(data.address)
-        setContact(data.contact)
-        setEmail(data.email)
-        setSdate(data.sdate)
-        setPost(data.post)
-        setStatus(data.status)
-        setProjects(data.projects)
-        setSkill(data.skill)
-        setexperience(data.experience)
-        setInitial(false)
-
-        if(data.status=="active"){setCheck(true)}
-       
+  
+      if (data.status == "active") {
+        setCheck(true);
+      }
     }
+  },[data])
 
-    // function for handeling reset 
-    const handelReset=(e)=>{
-        e.preventDefault();
-        setName("")
-        setImg(null)
-        setCode("")
-        setGender(null)
-        setDob("")
-        setNationality("nepal")
-        setAddress("")
-        setContact("")
-        setEmail("")
-        setSdate("")
-        setPost("Developer")
-        setStatus("available")
-        setProjects("")
-        setSkill(0)
-        setexperience(0)
-        setCheck(false)   
+  // function for handeling reset
+  const handelReset = (e) => {
+    e.preventDefault();
+    setName("");
+    setImg(null);
+    setCode("");
+    setGender(null);
+    setDob("");
+    setNationality("nepal");
+    setAddress("");
+    setContact("");
+    setEmail("");
+    setSdate("");
+    setPost("Developer");
+    setStatus("available");
+    setProjects("");
+    setSkill(0);
+    setexperience(0);
+    setCheck(false);
+  };
+//  handeling img 
+  const handelImg = async (e) => {
+    setPending(true)
+    e.preventDefault();
+    const imgRef=ref(imageDb,`Files/${v4()}`)
+    // uploadBytes(imgRef,tempimg)
+    try {
+      await uploadBytes(imgRef, tempimg);
+     
+      const imageUrl = await getDownloadURL(imgRef);
+     
+      setImg(imageUrl)
+      setPending(false)
+    } catch (error) {
+      F
+      setError(error)
+      setPending(false)
     }
+  };
+ 
   
-  
-    const handelImg = async (e) => {
-      const file = e.target.files[0];
-      const base64 = await convertToBase64(file);
-      setImg(base64);
-    };
-    const convertToBase64 = (file) => {
-      return new Promise((resolve, reject) => {
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(file);
-        fileReader.onload = () => {
-          resolve(fileReader.result);
-        };
-        fileReader.onerror = (error) => {
-          reject(error);
-        };
-      });
-    };
-    // function to make that checks whether the code exist already or not
-    const handelCode = (e) => {
-      console.log(e.target.value);
-      setCode(e.target.value);
-    };
-    // function for the status
-    const handelcheck = () => {
-      setCheck(!check);
-      const temp = check ? "available" : "active";
-      setStatus(temp);
-    };
-  
+ 
+  // function to make that checks whether the code exist already or not
+  const handelCode = (e) => {
+    // console.log(e.target.value);
+    setCode(e.target.value);
+  };
+  // function for the status
+  const handelcheck = () => {
+    setCheck(!check);
+    const temp = check ? "available" : "active";
+    setStatus(temp);
+  };
 
+  const handelSubmit = async(e) => {
+    e.preventDefault();
+    const value = {
+      name,
+      image,
+      code,
+      gender,
+      dob,
+      nationality,
+      address,
+      contact,
+      email,
+      sdate,
+      post,
+      status,
+      projects,
+      skill,
+      experience,
+    };
+    setPending(true);
    
-    const handelSubmit = (e) => {
-      e.preventDefault();
-      const value = {
-        name,
-        image,
-        code,
-        gender,
-        dob,
-        nationality,
-        address,
-        contact,
-        email,
-        sdate,
-        post,
-        status,
-        projects,
-        skill,
-        experience,
-      };
-      setPending(true);
-      fetch(valueobj.url, {
-        method: valueobj.method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(value),
-      }).then(()=>{
-        console.log("dine")
-        setPending(false)
-        navigate(valueobj.navigate)
-      },(error)=>{
-        console.log(error)
-        setPending(false)
-        setError(error.message)
-      })
-    };
+ 
+    try {
+      await ChangeDAta(valueobj.url,valueobj.method, value);
+      console.log("done");
+        setPending(false);
+        navigate(valueobj.navigate);
+    } catch (error) {
+      console.log(error);
+          setPending(false);
+          setError(error.message);
+    }
+  };
   return (
     <div>
       <div className="h-screen w-screen  bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] p-2">
@@ -154,7 +161,7 @@ export default function Createcomp({data,valueobj}) {
             {/* icon  */}
 
             <div className="lg:w-1/4 flex  justify-center h-1/2 mt-8 w-full ">
-              <img src="\icon.png" alt="logo" />
+              <img src="/image/icon.png" alt="logo" />
             </div>
             {/* form  */}
             <div className="lg:w-1/3 w-full">
@@ -163,13 +170,14 @@ export default function Createcomp({data,valueobj}) {
                 className="space-y-2"
                 autoComplete="on"
                 onSubmit={handelSubmit}
+                encType="mutlipart/form-data"
               >
                 <div className="flex flex-col">
                   <label htmlFor="name">Enter the Employee name:</label>
                   <input
                     type="text"
                     name="name"
-                    value={name}
+                    value={name || ""}
                     id="name"
                     className="input input-bordered input-primary h-8 "
                     onChange={(e) => {
@@ -177,7 +185,7 @@ export default function Createcomp({data,valueobj}) {
                     }}
                   />
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col gap-3">
                   <label htmlFor="img">Choose the Image:</label>
                   <input
                     type="file"
@@ -185,9 +193,10 @@ export default function Createcomp({data,valueobj}) {
                     id="img"
                     className="file-input file-input-bordered file-input-primary "
                     onChange={(e) => {
-                      handelImg(e);
+                      setTempimg(e.target.files[0])
                     }}
                   />
+                  <button className="btn btn-primary" onClick={handelImg}>Upload Img</button>
                 </div>
                 <div className="flex flex-col">
                   <label htmlFor="code">Enter the Employee code:</label>
@@ -195,7 +204,7 @@ export default function Createcomp({data,valueobj}) {
                     type="text"
                     name="code"
                     id="code"
-                    value={code}
+                    value={code || ""}
                     className="input input-bordered input-primary h-8 "
                     onChange={(e) => {
                       handelCode(e);
@@ -208,7 +217,7 @@ export default function Createcomp({data,valueobj}) {
                     type="radio"
                     name="gender"
                     id="male"
-                   checked={gender=="male"}
+                    checked={gender == "male"}
                     className="radio radio-primary"
                     onChange={() => {
                       setGender("male");
@@ -219,7 +228,7 @@ export default function Createcomp({data,valueobj}) {
                     type="radio"
                     name="gender"
                     id="female"
-                    checked={gender=="female"}
+                    checked={gender == "female"}
                     className="radio radio-primary"
                     onChange={() => {
                       setGender("female");
@@ -232,7 +241,7 @@ export default function Createcomp({data,valueobj}) {
                   <input
                     type="date"
                     name="dob"
-                    value={dob}
+                    value={dob || ""}
                     id="dob"
                     className="input input-bordered input-primary h-8"
                     onChange={(e) => {
@@ -263,7 +272,7 @@ export default function Createcomp({data,valueobj}) {
                     type="text"
                     name="address"
                     id="address"
-                    value={address}
+                    value={address || ""}
                     className="input input-bordered input-primary h-8"
                     onChange={(e) => {
                       setAddress(e.target.value);
@@ -276,7 +285,7 @@ export default function Createcomp({data,valueobj}) {
                     type="tel"
                     name="contact"
                     id="contact"
-                    value={contact}
+                    value={contact || ""}
                     className="input input-bordered input-primary h-8"
                     onChange={(e) => {
                       setContact(e.target.value);
@@ -289,7 +298,7 @@ export default function Createcomp({data,valueobj}) {
                     type="email"
                     name="email"
                     id="email"
-                    value={email}
+                    value={email || ""}
                     className="input input-bordered input-primary h-8"
                     onChange={(e) => {
                       setEmail(e.target.value);
@@ -301,7 +310,7 @@ export default function Createcomp({data,valueobj}) {
                   <input
                     type="date"
                     id="sdate"
-                    value={sdate}
+                    value={sdate || ""}
                     className="input input-bordered input-primary h-8"
                     onChange={(e) => {
                       setSdate(e.target.value);
@@ -332,7 +341,7 @@ export default function Createcomp({data,valueobj}) {
                     <input
                       type="checkbox"
                       className="toggle toggle-accent"
-                      checked={status=="active"?true:false}
+                      checked={status == "active" ? true : false}
                       onChange={handelcheck}
                     />
                     <p>active</p>
@@ -344,7 +353,7 @@ export default function Createcomp({data,valueobj}) {
                     type="number"
                     id="project"
                     className="input input-bordered input-primary h-8"
-                    value={projects}
+                    value={projects || ""}
                     onChange={(e) => {
                       setProjects(e.target.value);
                     }}
@@ -377,8 +386,8 @@ export default function Createcomp({data,valueobj}) {
                     max="100"
                     className="range range-primary"
                     step="10"
-                    value={experience*10}
-                    onChange={(e) => setexperience(e.target.value/10)}
+                    value={experience * 10}
+                    onChange={(e) => setexperience(e.target.value / 10)}
                   />
                   <div className="w-full flex justify-between text-xs px-2">
                     <span>0 yrs</span>
@@ -394,24 +403,29 @@ export default function Createcomp({data,valueobj}) {
                     <span>10+ yrs</span>
                   </div>
                 </div>
-                {errorr&&<div className="alert alert-error">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="stroke-current shrink-0 h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  <span>{errorr}</span>
-                </div>}
+                {errorr && (
+                  <div className="alert alert-error">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="stroke-current shrink-0 h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span>{errorr}</span>
+                  </div>
+                )}
                 <div className="flex gap-3 pt-6 mx-auto justify-center">
-                  <button className="btn btn-primary btn-outline" onClick={handelReset}>
+                  <button
+                    className="btn btn-primary btn-outline"
+                    onClick={handelReset}
+                  >
                     Reset
                   </button>
                   {!pending && (
@@ -438,5 +452,5 @@ export default function Createcomp({data,valueobj}) {
         </div>
       </div>
     </div>
-  )
+  );
 }

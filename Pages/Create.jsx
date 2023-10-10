@@ -1,17 +1,17 @@
 import React from "react";
-
+import { SingleDataUrl } from "../Urls/Urlpath";
 import Createcomp from "../src/component/Createcomp";
 
 export default function Create() {
   const valueobj={
     name:"Post",
-    url:"http://localhost:8000/data",
+    url:SingleDataUrl,
     method:"POST",
     navigate:"/Staff"
   }
   return (
     <>
-     <Createcomp valueobj={valueobj} ></Createcomp>
+     <Createcomp valueobj={valueobj} data={null} ></Createcomp>
       
     </>
   );

@@ -2,33 +2,35 @@ import React, { useEffect, useState } from "react";
 import useFetch from "./useFetch";
 import Table from "./Table";
 import { Link } from "react-router-dom";
-
+import { AllDataUrl } from "../../Urls/Urlpath";
 export default function Staff() {
-  const { data, pending, error } = useFetch("http://localhost:8000/data");
-  const [check, setCheck] = useState(true);
-  const [simValue, setSimValue] = useState();
+  const { value, pending, error } = useFetch(AllDataUrl);
+  const [simValue, setSimValue] = useState([]);
   const [posts, setPost] = useState("all");
   const [statuss, setStatus] = useState("all");
   const [search, setSearch] = useState("");
 
   // initializing the simulated value to the fetched data
-  if (data && check) {
-    setSimValue(data);
-    setCheck(false);
-  }
+
+  useEffect(() => {
+    if (value) {
+      setSimValue(value.records);
+    
+    }
+  }, [value]);
   // sort by post and status
 
   const sortBy = () => {
     const lowerCasePosts = posts.toLowerCase();
     const lowerCaseStatuss = statuss.toLowerCase();
 
-    const filteredData = data.filter((item) => {
-      const lowerCaseStatus = item.status.toLowerCase();
+    const filteredData = value.records.filter((item) => {
+      const lowerCaseStatus = item.data.status.toLowerCase();
 
       // Check if the item matches the selected `posts` and `statuss`
       return (
         (lowerCasePosts === "all" ||
-          lowerCasePosts === item.post.toLowerCase()) &&
+          lowerCasePosts === item.data.post.toLowerCase()) &&
         (lowerCaseStatuss === "all" || lowerCaseStatuss === lowerCaseStatus)
       );
     });
@@ -36,14 +38,16 @@ export default function Staff() {
   };
 
   useEffect(() => {
-    if (data) {
+    if (value) {
       sortBy();
     }
   }, [posts, statuss]);
   // function for the search event
   const handelSearch = () => {
     const regexp = new RegExp(search, "i");
-    const filteredData = data.filter((items) => regexp.test(items.name));
+    const filteredData = value.records.filter((items) =>
+      regexp.test(items.data.name)
+    );
     setSimValue(filteredData);
   };
   return (
@@ -149,7 +153,7 @@ export default function Staff() {
               <span>{error}</span>
             </div>
           )}
-          {data && <Table data={simValue} setSimValue={setSimValue}></Table>}
+          {value && <Table values={simValue} setSimValue={setSimValue}></Table>}
         </div>
       </div>
     </>

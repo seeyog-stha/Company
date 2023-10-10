@@ -1,26 +1,23 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import ChangeDAta from "./ChangeDAta";
+import { SingleDataUrl } from "../../Urls/Urlpath";
+export default function Table({ values,setSimValue }) {
 
-export default function Table({ data,setSimValue }) {
-  
   const [error, setError] = useState();
   const navigate = useNavigate();
   const handelDelete = async (id) => {
-    console.log("id", id);
+ 
     const conf = confirm("do you want to delete?");
 
     if (conf) {
-      await fetch("http://localhost:8000/data/" + id, {
-        method: "DELETE",
-      }).then(
-        () => {
-          const filteredData = data.filter((items) => items.id !== id);
+       try {
+        await ChangeDAta(SingleDataUrl + id, "DELETE");
+        const filteredData = values.filter((items) => items.id !== id);
           setSimValue(filteredData);
-        },
-        (error) => {
-          setError("sorry!! error occured while deleting the record");
-        }
-      );
+      } catch (err) {
+        setError("sorry!! error occured while deleting the record" + err);
+      }
     }
   };
   return (
@@ -55,7 +52,7 @@ export default function Table({ data,setSimValue }) {
                 </tr>
               </thead>
               <tbody>
-                {data.map((obj, index) => (
+                {values.map((obj, index) => (
                   <tr
                     className="hover cursor-pointer "
                     key={obj.id}
@@ -69,20 +66,20 @@ export default function Table({ data,setSimValue }) {
                         {/* image  */}
                         <div
                           className={`avatar ${
-                            obj.status == "active" ? "online" : "offline"
+                            obj.data.status == "active" ? "online" : "offline"
                           } w-12 h-12`}
                         >
                           <div className="w-12 h-12 rounded-full border border-gray-400">
-                            <img src={obj.image} alt="image" />
+                            <img src={obj.data.image} alt="image" />
                           </div>
                         </div>
                         {/* name  */}
                         <div>
                           <div className="font-bold capitalize text-lg">
-                            {obj.name}
+                            {obj.data.name}
                           </div>
                           <div className="text-sm opacity-50 capitalize">
-                            {obj.address}
+                            {obj.data.address}
                           </div>
                         </div>
                       </div>
@@ -90,11 +87,11 @@ export default function Table({ data,setSimValue }) {
                     {/* post  */}
                     <td>
                       <div className="font-bold text-xl capitalize">
-                        {obj.post}
+                        {obj.data.post}
                       </div>
                     </td>
                     <td>
-                      <div>{obj.status}</div>
+                      <div>{obj.data.status}</div>
                     </td>
                     <td>
                       <div className="flex">
