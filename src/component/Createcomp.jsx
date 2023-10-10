@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChangeDAta from "./ChangeDAta";
 import { imageDb } from "./ImageConfig";
-import {getDownloadURL, listAll, ref, uploadBytes} from "firebase/storage"
+import {getDownloadURL, ref, uploadBytes} from "firebase/storage"
 import {v4 } from "uuid"
 export default function Createcomp({ data, valueobj }) {
   const navigate = useNavigate();
