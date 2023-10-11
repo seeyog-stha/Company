@@ -19,7 +19,7 @@ export default function Carousel() {
     },
     {
       id: 2,
-      img: {carouselimg2},
+      img: carouselimg2,
       title:"Empowering businesses through innovative IT solutions.",
       background:"bg-[#D2B48C]"
 
