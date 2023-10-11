@@ -21,17 +21,18 @@ function App() {
         <BrowserRouter>     
 
           <Routes>
-            <Route path="/" element={<Hero/>}/>
+ 
+            <Route path="https://seeyog-stha.github.io/Company/" element={<Hero/>}/>
             <Route element={<Layout setTheme={setTheme}></Layout>}>
 
-            <Route path="/Home" element={<Home />}></Route>
-            <Route path="/Staff" element={<StaffPage />}></Route>
-            <Route path="/Contact" element={<Contact/>}/>
-            <Route path="/About" element={<About/>}/>
+            <Route path="https://seeyog-stha.github.io/Company/Home" element={<Home />}></Route>
+            <Route path="https://seeyog-stha.github.io/Company/Staff" element={<StaffPage />}></Route>
+            <Route path="https://seeyog-stha.github.io/Company/Contact" element={<Contact/>}/>
+            <Route path="https://seeyog-stha.github.io/Company/About" element={<About/>}/>
             </Route>
-            <Route path="/Staff/:id" element={<StaffDetails/>}></Route>
-            <Route path="/Staff/Create" element={<Create></Create>}></Route>
-            <Route path="/Staff/Update/:id" element={<Update></Update>}></Route>
+            <Route path="https://seeyog-stha.github.io/Company/Staff/:id" element={<StaffDetails/>}></Route>
+            <Route path="https://seeyog-stha.github.io/Company/Staff/Create" element={<Create></Create>}></Route>
+            <Route path="https://seeyog-stha.github.io/Company/Staff/Update/:id" element={<Update></Update>}></Route>
           </Routes>
           
         </BrowserRouter>
