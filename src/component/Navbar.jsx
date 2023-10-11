@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import logo from "../../image/logo.png"
 export default function Navbar(props) {
  
   const setTheme=props.setTheme
@@ -37,7 +37,7 @@ export default function Navbar(props) {
           </div>
           {/*  company logo */}
           <Link to="/Home">
-            <img src="image/logo.png" alt="logo" className="h-12" />
+            <img src={logo} alt="logo" className="h-12" />
           </Link>
         </div>
         {/* right part of my navbar  */}

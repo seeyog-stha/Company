@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Typingani from "./Typingani";
 import CountUp from "react-countup";
+import aboutImage from "../../image/About-Us.jpg"
 export default function Aboutcomp() {
   const [isVisible, SetIsVisible] = useState(false);
   const scroll = () => {
@@ -14,8 +15,8 @@ export default function Aboutcomp() {
       <div>
         <div className="w-full h-[45vh] lg:h-screen relative text-center">
           <img
-            src="https://ica-hpl.com.my/wp-content/uploads/About-Us.jpg"
-            alt=""
+            src={aboutImage}
+            alt="about image"
             className="w-full lg:h-5/6 opacity-90 h-[60%]"
           />
           <Typingani></Typingani>
