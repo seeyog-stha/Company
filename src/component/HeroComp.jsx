@@ -5,7 +5,8 @@ export default function HeroComp() {
     <>
   
       <div className="w-full h-screen relative overflow-hidden">
-        <img src="../image/hero.jpg" alt="" className="h-screen w-full" />
+        {/* <img src="../image/hero.jpg" alt="" className="h-screen w-full" /> */}
+        <img src="https://raw.githubusercontent.com/seeyog-stha/Company/main/image/hero.jpg" alt="" className="h-screen w-full" />
         <img
           src="../image/deeranimation.gif"
           alt="runnigdeer"

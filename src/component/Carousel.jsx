@@ -63,7 +63,7 @@ export default function Carousel() {
                 alt="logo"
                 className="w-20 h-7 absolute right-4 bottom-3"
               />
-              <q className="absolute w-full text-2xl bottom-10 text-center  lg:text-7xl lg:right-10 lg:top-20 lg:w-1/2  lg:font-thin">
+              <q className="absolute w-full text-2xl bottom-9 text-center  lg:text-7xl lg:right-10 lg:top-20 lg:w-1/2  lg:font-thin">
                 {slide.title}
               </q>
             </div>
