@@ -7,7 +7,7 @@ export default function Create() {
     name:"Post",
     url:SingleDataUrl,
     method:"POST",
-    navigate:"/Company/Staff"
+    navigate:"/Staff"
   }
   return (
     <>

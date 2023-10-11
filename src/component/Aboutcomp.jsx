@@ -12,47 +12,69 @@ export default function Aboutcomp() {
   return (
     <>
       <div>
-        <div className="w-full h-screen relative text-center">
+        <div className="w-full h-[45vh] lg:h-screen relative text-center">
           <img
             src="https://ica-hpl.com.my/wp-content/uploads/About-Us.jpg"
             alt=""
-            className="w-full lg:h-5/6 opacity-90 h-2/3"
+            className="w-full lg:h-5/6 opacity-90 h-[60%]"
           />
           <Typingani></Typingani>
         </div>
-        {isVisible && (
-          <div className="flex justify-evenly text-4xl font-extrabold flex-col lg:flex-row items-center space-y-7">
-            <p>Let's see what we got here</p>
-            <div className="text-blue-800 flex lg:flex-col gap-3">
+        <div className="hidden lg:block">
+          {isVisible && (
+            <div className="flex justify-evenly text-4xl font-extrabold   items-center space-y-7">
+              <p>Let's see what we got here</p>
+              <div className="text-blue-800  gap-3">
+                <div>
+                  <CountUp start={0} end={100} duration={2} delay={0.5} />+
+                </div>
+                <p>Employees</p>
+              </div>
+              <div className="text-yellow-600  gap-3">
+                <div>
+                  <CountUp start={0} end={7000} duration={2} delay={0.5} />+
+                </div>
+                <p>Projects</p>
+              </div>
+              <div className="text-pink-600  gap-3">
+                <div>
+                  <CountUp start={0} end={8} duration={2} delay={0.5} />+
+                </div>
+                <p>Partners</p>
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="lg:hidden h-[40vh]">
+          <div className="flex justify-evenly text-3xl font-extrabold flex-col items-center space-y-7 p-1">
+            <p className="underline">Let's see what we got here</p>
+            <div className="text-blue-800 flex  gap-3">
               <div>
-
-              <CountUp start={0} end={100} duration={2} delay={0.5} />+
+                <CountUp start={0} end={100} duration={2} delay={0.5} />+
               </div>
               <p>Employees</p>
             </div>
-            <div className="text-yellow-600 flex lg:flex-col gap-3">
+            <div className="text-yellow-600 flex  gap-3">
               <div>
-
-              <CountUp start={0} end={7000} duration={2} delay={0.5} />+
+                <CountUp start={0} end={7000} duration={2} delay={0.5} />+
               </div>
               <p>Projects</p>
             </div>
-            <div className="text-pink-600 flex lg:flex-col gap-3">
+            <div className="text-pink-600 flex  gap-3">
               <div>
-
-              <CountUp start={0} end={8} duration={2} delay={0.5} />+
+                <CountUp start={0} end={8} duration={2} delay={0.5} />+
               </div>
               <p>Partners</p>
             </div>
           </div>
-        )}
+        </div>
         <div className="pt-20 px-6">
           <h2 className="text-5xl font-extrabold underline text-center">
             Our Vision
           </h2>
           <div className="mt-7 flex items-center justify-evenly flex-col lg:flex-row">
             <img src="image/aboutpic.png" alt="img" className="h-1/2" />
-            <p className="lg:w-2/5 text-xl w-full">
+            <p className="lg:w-2/5 text-xl w-full mt-4">
               To be the leading catalyst of technological innovation, empowering
               organizations worldwide to achieve their fullest potential. We
               envision a future where our cutting-edge solutions seamlessly
@@ -210,11 +232,7 @@ export default function Aboutcomp() {
                         <stop stopColor="#E0E8B7" />
                         <stop offset="0.444662" stopColor="#FB8A2E" />
                         <stop offset="0.71474" stopColor="#E2425C" />
-                        <stop
-                          offset="1"
-                          stopColor="#E2425C"
-                          stopOpacity="0"
-                        />
+                        <stop offset="1" stopColor="#E2425C" stopOpacity="0" />
                       </radialGradient>
                       <radialGradient
                         id="paint2_radial_87_7153"
@@ -226,11 +244,7 @@ export default function Aboutcomp() {
                       >
                         <stop offset="0.156701" stopColor="#406ADC" />
                         <stop offset="0.467799" stopColor="#6A45BE" />
-                        <stop
-                          offset="1"
-                          stopColor="#6A45BE"
-                          stopOpacity="0"
-                        />
+                        <stop offset="1" stopColor="#6A45BE" stopOpacity="0" />
                       </radialGradient>
                     </defs>
                   </svg>
@@ -384,11 +398,7 @@ export default function Aboutcomp() {
                         <stop stopColor="#E0E8B7" />
                         <stop offset="0.444662" stopColor="#FB8A2E" />
                         <stop offset="0.71474" stopColor="#E2425C" />
-                        <stop
-                          offset="1"
-                          stopColor="#E2425C"
-                          stopOpacity="0"
-                        />
+                        <stop offset="1" stopColor="#E2425C" stopOpacity="0" />
                       </radialGradient>
                       <radialGradient
                         id="paint2_radial_87_7153"
@@ -400,11 +410,7 @@ export default function Aboutcomp() {
                       >
                         <stop offset="0.156701" stopColor="#406ADC" />
                         <stop offset="0.467799" stopColor="#6A45BE" />
-                        <stop
-                          offset="1"
-                          stopColor="#6A45BE"
-                          stopOpacity="0"
-                        />
+                        <stop offset="1" stopColor="#6A45BE" stopOpacity="0" />
                       </radialGradient>
                     </defs>
                   </svg>
@@ -425,7 +431,9 @@ export default function Aboutcomp() {
               <h4 className="text-2xl font-bold">Test 2</h4>
               <p className="text-xl">HR</p>
               <p>
-              "As the HR leader, my mission is to attract, develop, and retain top talent, ensuring that our company thrives through a culture of diversity, inclusion, and continuous growth."
+                "As the HR leader, my mission is to attract, develop, and retain
+                top talent, ensuring that our company thrives through a culture
+                of diversity, inclusion, and continuous growth."
               </p>
             </div>
             {/* social media  */}
@@ -553,11 +561,7 @@ export default function Aboutcomp() {
                         <stop stopColor="#E0E8B7" />
                         <stop offset="0.444662" stopColor="#FB8A2E" />
                         <stop offset="0.71474" stopColor="#E2425C" />
-                        <stop
-                          offset="1"
-                          stopColor="#E2425C"
-                          stopOpacity="0"
-                        />
+                        <stop offset="1" stopColor="#E2425C" stopOpacity="0" />
                       </radialGradient>
                       <radialGradient
                         id="paint2_radial_87_7153"
@@ -569,11 +573,7 @@ export default function Aboutcomp() {
                       >
                         <stop offset="0.156701" stopColor="#406ADC" />
                         <stop offset="0.467799" stopColor="#6A45BE" />
-                        <stop
-                          offset="1"
-                          stopColor="#6A45BE"
-                          stopOpacity="0"
-                        />
+                        <stop offset="1" stopColor="#6A45BE" stopOpacity="0" />
                       </radialGradient>
                     </defs>
                   </svg>
@@ -594,7 +594,10 @@ export default function Aboutcomp() {
               <h4 className="text-2xl font-bold">Test 3</h4>
               <p className="text-xl">Senior Developer</p>
               <p>
-              "As a senior developer, I leverage my extensive experience to architect and implement robust software solutions, contributing to our team's technical prowess and pushing the boundaries of innovation."
+                "As a senior developer, I leverage my extensive experience to
+                architect and implement robust software solutions, contributing
+                to our team's technical prowess and pushing the boundaries of
+                innovation."
               </p>
             </div>
             {/* social media  */}
@@ -722,11 +725,7 @@ export default function Aboutcomp() {
                         <stop stopColor="#E0E8B7" />
                         <stop offset="0.444662" stopColor="#FB8A2E" />
                         <stop offset="0.71474" stopColor="#E2425C" />
-                        <stop
-                          offset="1"
-                          stopColor="#E2425C"
-                          stopOpacity="0"
-                        />
+                        <stop offset="1" stopColor="#E2425C" stopOpacity="0" />
                       </radialGradient>
                       <radialGradient
                         id="paint2_radial_87_7153"
@@ -738,11 +737,7 @@ export default function Aboutcomp() {
                       >
                         <stop offset="0.156701" stopColor="#406ADC" />
                         <stop offset="0.467799" stopColor="#6A45BE" />
-                        <stop
-                          offset="1"
-                          stopColor="#6A45BE"
-                          stopOpacity="0"
-                        />
+                        <stop offset="1" stopColor="#6A45BE" stopOpacity="0" />
                       </radialGradient>
                     </defs>
                   </svg>

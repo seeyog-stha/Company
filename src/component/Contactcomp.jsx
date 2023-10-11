@@ -37,9 +37,9 @@ export default function Contactcomp() {
           <div className="flex lg:flex-row  lg:h-5/6 flex-col-reverse">
             <div className="lg:w-1/2  lg:border-r lg:border-black lg:m-7 px-3 space-y-4 lg:space-y-9 ">
               {/* address  */}
-              <div className="flex gap-3">
+              <div className="flex gap-3 ">
                 <svg
-                  className="btn btn-circle"
+                  className="btn btn-circle "
                   data-name="Layer 1"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 128 128"

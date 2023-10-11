@@ -11,7 +11,7 @@ export default function Update() {
     name:"Update",
     url:SingleDataUrl + id,
     method:"PUT",
-    navigate:"/Company/Staff/"+id
+    navigate:"/Staff/"+id
   }
   return (
     <div>

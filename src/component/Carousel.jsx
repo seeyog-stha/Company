@@ -42,7 +42,7 @@ export default function Carousel() {
   },[currentSlide])
   return (
     <>
-      <div className="w-full  h-[85vh] ">
+      <div className="w-full  lg:h-[80vh] h-[50vh]">
         <div className=" w-full  h-full relative overflow-hidden">
           {slide.map((slide) => (
             <div
@@ -56,14 +56,14 @@ export default function Carousel() {
               <img
                 src={slide.img}
                 alt="image"
-                className="lg:h-5/6 lg:w-[26%] h-[50%] w-[50%] opacity-80 border border-gray-300 rounded-xl -rotate-12 absolute top-10 lg:left-40 shadow-xl shadow-black  "
+                className="lg:h-5/6 lg:w-[26%] h-[60%] w-[50%] opacity-80 border border-gray-300 rounded-xl -rotate-12 absolute lg:top-10 lg:left-40 shadow-xl shadow-black  top-5 left-20"
               />
               <img
                 src="image/pinklogo.png"
                 alt="logo"
                 className="w-20 h-7 absolute right-4 bottom-3"
               />
-              <q className="absolute text-4xl top-40 lg:text-7xl right-10 lg:top-20 w-1/2 font-extrabold lg:font-thin">
+              <q className="absolute w-full text-2xl bottom-10 text-center  lg:text-7xl lg:right-10 lg:top-20 lg:w-1/2  lg:font-thin">
                 {slide.title}
               </q>
             </div>
@@ -79,7 +79,7 @@ export default function Carousel() {
         </div>
       </div>
       <div className="flex justify-center hover:invert">
-        <img src="image/logoline.png" alt="" className="h-10 " />
+        <img src="image/logoline.png" alt="" className="h-10" />
       </div>
     </>
   );

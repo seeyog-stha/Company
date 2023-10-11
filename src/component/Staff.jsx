@@ -55,13 +55,13 @@ export default function Staff() {
       <div className="w-full bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] h-screen py-2">
         <div className=" w-11/12 h-full bg-base-100 mx-auto">
           {/* options */}
-          <div className="flex justify-between px-4 space-x-5 flex-col lg:flex-row">
+          <div className="flex justify-between px-4 space-x-5 flex-col lg:flex-row ">
             {/* left sort part */}
             <div>
               <div className="flex flex-col lg:flex-row items-center order-last lg:order-first pt-2">
-                <p>Sort by:</p>
-                <div className="flex space-x-1 lg:space-x-5 ">
-                  <p className="ml-2"> Post</p>
+                <p className="underline mb-2 font-bold text-xl">Sort by :</p>
+                <div className="flex  lg:space-x-5 items-center text-sm lg:text-base space-x-4">
+                  <p className="ml-2 "> Post</p>
                   <select
                     className="select select-info select-sm max-w-xs mx-2"
                     value={posts}
@@ -88,7 +88,7 @@ export default function Staff() {
               </div>
             </div>
             {/* rigth search  */}
-            <div className="order-first lg:order-last flex">
+            <div className="order-first lg:order-last flex items-center lg:items-start">
               <Link to="/Staff/Create">
                 <div className="btn btn-sm bg-green-700 mr-10 my-auto text-base-200 mt-2 ">
                   +create

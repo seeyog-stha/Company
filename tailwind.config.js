@@ -5,14 +5,14 @@ export default {
     extend: {
       keyframes: {
         Moveright: {
-          "0%": { transform: "translateX(0)",opacity:1 },
+          "0%": { transform: "translateX(0)",opacity:0.8 },
         
-          "100%": { transform: "translateX(100vw)",opacity:1},
+          "100%": { transform: "translateX(100vw)",opacity:0.8},
         },
         Movedown:{
           "0%": { top:"-100vh"},
         
-          "100%": { top:"8rem"},
+          "100%": { top:"30%"},
         }
       },
       animation: {

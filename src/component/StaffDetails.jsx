@@ -50,7 +50,7 @@ export default function StaffDetails() {
             <button
               className="btn btn-circle"
               onClick={() => {
-                navigate("/Company/Staff");
+                navigate("/Staff");
               }}
             >
               ❮

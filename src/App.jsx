@@ -18,21 +18,21 @@ function App() {
     <>
       {/* bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] h-screen */}
       <div className="font-[poppins] " data-theme={theme}>
-        <BrowserRouter>     
+        <BrowserRouter basename="/Company">     
 
           <Routes>
  
-            <Route path="/Company/" element={<Hero/>}/>
+            <Route path="/" element={<Hero/>}/>
             <Route element={<Layout setTheme={setTheme}></Layout>}>
 
-            <Route path="/Company/Home" element={<Home />}></Route>
-            <Route path="/Company/Staff" element={<StaffPage />}></Route>
-            <Route path="/Company/Contact" element={<Contact/>}/>
-            <Route path="/Company/About" element={<About/>}/>
+            <Route path="/Home" element={<Home />}></Route>
+            <Route path="/Staff" element={<StaffPage />}></Route>
+            <Route path="/Contact" element={<Contact/>}/>
+            <Route path="/About" element={<About/>}/>
             </Route>
-            <Route path="/Company/Staff/:id" element={<StaffDetails/>}></Route>
-            <Route path="/Company/Staff/Create" element={<Create></Create>}></Route>
-            <Route path="/Company/Staff/Update/:id" element={<Update></Update>}></Route>
+            <Route path="/Staff/:id" element={<StaffDetails/>}></Route>
+            <Route path="/Staff/Create" element={<Create></Create>}></Route>
+            <Route path="/Staff/Update/:id" element={<Update></Update>}></Route>
           </Routes>
           
         </BrowserRouter>

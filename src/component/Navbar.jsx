@@ -29,10 +29,10 @@ export default function Navbar(props) {
               tabIndex={0}
               className="dropdown-content menu shadow bg-base-100 mt-2 w-[95vw] p-3 z-10 rounded-box flex items-center space-y-3"
             >
-              <Link to="/Company/Home"><li>home</li></Link>
-              <Link to="/Company/About"><li>about</li></Link>
-              <Link to="/Company/Staff"><li>staff</li></Link>
-              <Link to="/Company/Contact"><li>Contact us</li></Link>
+              <Link to="/Home"><li>home</li></Link>
+              <Link to="/About"><li>about</li></Link>
+              <Link to="/Staff"><li>staff</li></Link>
+              <Link to="/Contact"><li>Contact us</li></Link>
             </ul>
           </div>
           {/*  company logo */}
@@ -43,7 +43,7 @@ export default function Navbar(props) {
         {/* right part of my navbar  */}
         <div className="navbar-center " >
           <ul className="gap-x-10 hidden lg:flex">
-            <Link to="/Company/Home">
+            <Link to="/Home">
             <li className="btn-ghost btn"> 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -62,14 +62,14 @@ export default function Navbar(props) {
               <p className="font-bold text-lg">home</p>
             </li>
             </Link>
-            <Link to="/Company/About"><li className="btn-ghost btn "> <p className="font-bold text-lg">about us</p></li></Link>
-              <Link to="/Company/Staff">
+            <Link to="/About"><li className="btn-ghost btn "> <p className="font-bold text-lg">about us</p></li></Link>
+              <Link to="/Staff">
             <li className="btn-ghost btn ">
             <p className="font-bold text-lg">staff</p>
               <span className="badge badge-xs badge-info"></span>
             </li>
               </Link>
-              <Link to="/Company/Contact"><li className="btn-ghost btn "> <p className="font-bold text-lg">contact us</p></li></Link>
+              <Link to="/Contact"><li className="btn-ghost btn "> <p className="font-bold text-lg">contact us</p></li></Link>
           </ul>
           
         </div>
