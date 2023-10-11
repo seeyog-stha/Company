@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 export default function HeroComp() {
   return (
     <>
+  
       <div className="w-full h-screen relative overflow-hidden">
-        <img src="../../image/hero.png" alt="" className="h-screen w-full" />
+        <img src="../../../image/hero.png" alt="" className="h-screen w-full" />
         <img
           src="../../image/deeranimation.gif"
           alt="runnigdeer"
