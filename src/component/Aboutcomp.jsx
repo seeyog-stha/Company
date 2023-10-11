@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Typingani from "./Typingani";
 import CountUp from "react-countup";
 import aboutImage from "../../image/About-Us.jpg"
+import ourvisionImage from "../../image/ourvision.png"
 export default function Aboutcomp() {
   const [isVisible, SetIsVisible] = useState(false);
   const scroll = () => {
@@ -74,7 +75,7 @@ export default function Aboutcomp() {
             Our Vision
           </h2>
           <div className="mt-7 flex items-center justify-evenly flex-col lg:flex-row">
-            <img src="image/aboutpic.png" alt="img" className="h-1/2" />
+            <img src={ourvisionImage} alt="img" className="h-1/2" />
             <p className="lg:w-2/5 text-xl w-full mt-4">
               To be the leading catalyst of technological innovation, empowering
               organizations worldwide to achieve their fullest potential. We

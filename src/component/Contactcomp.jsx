@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import Map from "./Map";
+import contactImage from "../../image/contact.jpg"
 export default function Contactcomp() {
   const form = useRef();
   const [error, setError] = useState();
@@ -29,7 +30,10 @@ export default function Contactcomp() {
   };
   return (
     <div>
-      <div className=" h-screen lg:h-[70vh] bg-cover bg-no-repeat w-full bg-[url('image/contact.jpg')] pt-10 pb-2 relative flex justify-center items-center">
+    
+      <div className=" h-screen lg:h-[70vh] bg-cover bg-no-repeat w-full pt-10 pb-2 relative flex justify-center items-center" style={{
+        backgroundImage:` url(${contactImage})`
+      }}>
         <div className="h-full lg:w-7/12 w-11/12 rounded-xl bg-base-100 opacity-90 absolute lg:-bottom-10">
           <h2 className=" text-xl lg:text-3xl text-center underline font-extrabold">
             Contact info

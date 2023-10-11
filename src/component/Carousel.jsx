@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+import carouselimg2 from "../../image/empower.jpg"
+import pinklogoImg from "../../image/pinklogo.png"
 export default function Carousel() {
   const [currentSlide, setSlide] = useState(1);
   const nextSlide = () => {
@@ -18,7 +19,7 @@ export default function Carousel() {
     },
     {
       id: 2,
-      img: "image/empower.jpg",
+      img: {carouselimg2},
       title:"Empowering businesses through innovative IT solutions.",
       background:"bg-[#D2B48C]"
 
@@ -59,7 +60,7 @@ export default function Carousel() {
                 className="lg:h-5/6 lg:w-[26%] h-[60%] w-[50%] opacity-80 border border-gray-300 rounded-xl -rotate-12 absolute lg:top-10 lg:left-40 shadow-xl shadow-black  top-5 left-20"
               />
               <img
-                src="image/pinklogo.png"
+                src={pinklogoImg}
                 alt="logo"
                 className="w-20 h-7 absolute right-4 bottom-3"
               />

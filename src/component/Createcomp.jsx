@@ -4,6 +4,7 @@ import ChangeDAta from "./ChangeDAta";
 import { imageDb } from "./ImageConfig";
 import {getDownloadURL, ref, uploadBytes} from "firebase/storage"
 import {v4 } from "uuid"
+import iconImg from "../../image/icon.png"
 export default function Createcomp({ data, valueobj }) {
   const navigate = useNavigate();
   const [name, setName] = useState();
@@ -161,7 +162,7 @@ export default function Createcomp({ data, valueobj }) {
             {/* icon  */}
 
             <div className="lg:w-1/4 flex  justify-center h-1/2 mt-8 w-full ">
-              <img src="/image/icon.png" alt="logo" />
+              <img src={iconImg} alt="logo" />
             </div>
             {/* form  */}
             <div className="lg:w-1/3 w-full">
