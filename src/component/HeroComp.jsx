@@ -1,14 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import heroImage from "../../image/hero.jpg"
+import runningDeer from "../../image/deeranimation.gif"
 export default function HeroComp() {
   return (
     <>
   
       <div className="w-full h-screen relative overflow-hidden">
         {/* <img src="../image/hero.jpg" alt="" className="h-screen w-full" /> */}
-        <img src="https://raw.githubusercontent.com/seeyog-stha/Company/main/image/hero.jpg" alt="" className="h-screen w-full" />
+        {/* <img src="https://raw.githubusercontent.com/seeyog-stha/Company/main/image/hero.jpg" alt="" className="h-screen w-full" /> */}
+        <img src={heroImage} alt="" className="h-screen w-full" />
         <img
-          src="../image/deeranimation.gif"
+          src={runningDeer}
           alt="runnigdeer"
           className="h-50 animate-Moveright absolute top-[40vh] opacity-0"
         />
