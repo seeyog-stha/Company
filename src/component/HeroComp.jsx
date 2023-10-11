@@ -4,9 +4,9 @@ export default function HeroComp() {
   return (
     <>
       <div className="w-full h-screen relative overflow-hidden">
-        <img src="./image/hero.png" alt="" className="h-screen w-full" />
+        <img src="/image/hero.png" alt="" className="h-screen w-full" />
         <img
-          src="./image/deeranimation.gif"
+          src="/image/deeranimation.gif"
           alt="runnigdeer"
           className="h-50 animate-Moveright absolute top-[40vh] opacity-0"
         />
