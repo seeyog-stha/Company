@@ -4,9 +4,9 @@ export default function HeroComp() {
   return (
     <>
       <div className="w-full h-screen relative overflow-hidden">
-        <img src="image/hero.png" alt="" className="h-screen w-full" />
+        <img src="./image/hero.png" alt="" className="h-screen w-full" />
         <img
-          src="image/deeranimation.gif"
+          src="./image/deeranimation.gif"
           alt="runnigdeer"
           className="h-50 animate-Moveright absolute top-[40vh] opacity-0"
         />
@@ -15,7 +15,7 @@ export default function HeroComp() {
           <h1 className="text-4xl lg:text-7xl font-extrabold ">Welcome to SUYOG</h1>
           <p className="text-xl ">Your IT solution partner.</p>
           <div>
-            <Link to="/Home">
+            <Link to="/Company/Home">
               <button className="btn btn-accent animate-bounce mt-4">Go to Home</button>
             </Link>
           </div>

@@ -17,7 +17,7 @@ export default function StaffDetails() {
     if (conf) {
       try {
         await ChangeDAta(SingleDataUrl + id, "DELETE");
-        navigate("/Staff");
+        navigate("/Company/Staff");
       } catch (err) {
         setError("sorry!! error occured while deleting the record" + err);
       }
@@ -50,7 +50,7 @@ export default function StaffDetails() {
             <button
               className="btn btn-circle"
               onClick={() => {
-                navigate("/Staff");
+                navigate("/Company/Staff");
               }}
             >
               ❮
