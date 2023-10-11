@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import carouselimg2 from "../../image/empower.jpg"
 import pinklogoImg from "../../image/pinklogo.png"
+import logolineImage from "../../image/logoline.png"
 export default function Carousel() {
   const [currentSlide, setSlide] = useState(1);
   const nextSlide = () => {
@@ -80,7 +81,7 @@ export default function Carousel() {
         </div>
       </div>
       <div className="flex justify-center hover:invert">
-        <img src="image/logoline.png" alt="" className="h-10" />
+        <img src={logolineImage} alt="" className="h-10" />
       </div>
     </>
   );
