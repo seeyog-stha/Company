@@ -10,7 +10,7 @@ export default function Carousel() {
   const prevSlide = () => {
     setSlide(currentSlide == 1 ? 4 : currentSlide - 1);
   };
-  console.log(currentSlide);
+
   const slide = [
     {
       id: 1,

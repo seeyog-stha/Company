@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import logoImg from "../../image/logo.png"
 export default function footer() {
   return (
-    <div className="footer items-center bg-base-300 px-14 justify-between py-3">
+    <div className="footer items-center bg-base-300 px-14 justify-between py-3 ">
       <div>
         <Link to="/Home">
         <img src={logoImg} alt="logo" className="h-10"/>
