@@ -130,11 +130,7 @@ export default function Staff() {
             </div>
           </div>
           {/* table  */}
-<<<<<<< HEAD
           <div className="flex justify-center border ">
-=======
-          <div className="flex justify-center">
->>>>>>> a48371803ade2fb6bae870410db94698d7a492ac
             {pending && (
               <span className="loading loading-dots loading-lg m-auto"></span>
             )}
@@ -157,7 +153,6 @@ export default function Staff() {
               <span>{error}</span>
             </div>
           )}
-<<<<<<< HEAD
          
           <div className="overflow-y-scroll h-[75%] lg:h-[85%]">
 
@@ -165,9 +160,6 @@ export default function Staff() {
           </div>
          
           
-=======
-          {value && <Table values={simValue} setSimValue={setSimValue}></Table>}
->>>>>>> a48371803ade2fb6bae870410db94698d7a492ac
         </div>
       </div>
     </>
