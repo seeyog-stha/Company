@@ -4,6 +4,12 @@ export default function useFetch(url) {
     const [value,setValue]=useState(null)
     const [pending,setPending]=useState(true)
     const [error,setError]=useState(null)
+<<<<<<< HEAD
+=======
+    const myHeaders = new Headers();
+  
+  myHeaders.append("x-collection-access-token", "db5ab6a2-69a3-426a-8eee-4d1f075d9e76");
+>>>>>>> a48371803ade2fb6bae870410db94698d7a492ac
     async function fetchData(url){
         try{
             let response=await fetch(url)

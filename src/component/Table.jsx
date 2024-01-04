@@ -21,7 +21,11 @@ export default function Table({ values,setSimValue }) {
     }
   };
   return (
+<<<<<<< HEAD
     <div className="h-full">
+=======
+    <div>
+>>>>>>> a48371803ade2fb6bae870410db94698d7a492ac
       <div>
        {error&& <div className="alert alert-error">
           <svg
@@ -39,7 +43,11 @@ export default function Table({ values,setSimValue }) {
           </svg>
           <span>{error}</span>
         </div>}
+<<<<<<< HEAD
         <div>
+=======
+        <div className="h-[75vh] lg:h-[87vh] overflow-y-scroll">
+>>>>>>> a48371803ade2fb6bae870410db94698d7a492ac
           <div className="overflow-x-auto ">
             <table className="table table-zebra">
               <thead>
