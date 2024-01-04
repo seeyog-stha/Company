@@ -153,7 +153,10 @@ export default function Staff() {
               <span>{error}</span>
             </div>
           )}
+          <div className="h-[75vh] lg:h-[80vh] overflow-y-scroll">
+
           {value && <Table values={simValue} setSimValue={setSimValue}></Table>}
+          </div>
         </div>
       </div>
     </>
