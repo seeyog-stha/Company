@@ -9,6 +9,7 @@ import Update from "../Pages/Update";
 import Contact from "../Pages/Contact";
 import About from "../Pages/About";
 import Hero from "../Pages/Hero";
+import BlogPage from "./component/BlogPage";
 function App() {
   const [theme, setTheme] = useState("light");
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/Staff/:id" element={<StaffDetails />}></Route>
             <Route path="/Staff/Create" element={<Create></Create>}></Route>
             <Route path="/Staff/Update/:id" element={<Update></Update>}></Route>
+            <Route path="/Home/Blog/:id" element={<BlogPage/>}/>
           </Routes>
         </BrowserRouter>
       </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useFetch from "./useFetch";
+import { Link } from "react-router-dom";
 
 export default function Blogs() {
   const BlogsPerPage = 4;
@@ -59,6 +60,9 @@ export default function Blogs() {
         <div>
           <div className="mx-3 my-7 h-[80vh] lg:h-[50vh] flex justify-evenly flex-wrap">
             {BlogsData.map((obj) => (
+              <Link to={`/Home/Blog/$obj.id`}>
+
+              
               <div
                 className="w-[40%] h-[45%] lg:w-1/5 lg:h-full  rounded-tr-xl shadow-xl shadow-gray-500 bg-gray-300"
                 key={obj.id}
@@ -76,6 +80,7 @@ export default function Blogs() {
                   </p>
                 </div>
               </div>
+            </Link>
             ))}
           </div>
           <div className="flex justify-center py-5">
