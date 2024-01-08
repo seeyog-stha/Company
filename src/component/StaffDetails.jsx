@@ -9,8 +9,9 @@ export default function StaffDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { value, pending, error } = useFetch(SingleDataUrl + id);
-  console.log(SingleDataUrl);
-  console.log(value, pending, error);
+  console.log(id);
+  // console.log(SingleDataUrl);
+  // console.log(value, pending, error);
   const handelDelete = async () => {
     const conf = confirm("do you want to delete?");
 
