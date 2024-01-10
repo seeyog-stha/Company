@@ -4,13 +4,13 @@ import logo from "../../image/logo.png";
 import useFetch from "./useFetch";
 import { SingleDataUrl } from "../../Urls/Urlpath";
 export default function BlogPage() {
-  const navigate = useNavigate();
-  const {id}=useParams();
- const {value,pending,error}=useFetch(SingleDataUrl+id);
+//   const navigate = useNavigate();
+//   const {id}=useParams();
+//  const {value,pending,error}=useFetch(SingleDataUrl+id);
 //  console.log(value)
   return (
     <>
-      {value&&<div className="bg-base-300 h-screen overflow-y-auto">
+      {/* {value&&<div className="bg-base-300 h-screen overflow-y-auto">
         <div className="sticky top-0 z-30 w-full flex items-center navbar h-10 bg-gray-400">
           <div className="navbar-start">
             <button
@@ -40,7 +40,8 @@ export default function BlogPage() {
             <p className="text-left">{value.data.body}</p>
           </div>
         </div>
-      </div>}
+      </div>} */}
+      hello there
     </>
   );
 }

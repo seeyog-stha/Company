@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from "react";
 import useFetch from "./useFetch";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AllBlogsData } from "../../Urls/Urlpath";
 export default function Blogs() {
+  const navigate=useNavigate()
   const BlogsPerPage = 4;
-  const { value, pending, error } = useFetch(AllBlogsData);
+  const { value , pending, error } = useFetch(AllBlogsData);
   const [BlogsData, setBlogsData] = useState([]);
   const [CurrentPage, setCurrentPage] = useState(1);
   const [TotalPages, setTotalPages] = useState();
+  console.log(value)
   useEffect(() => {
     if (value) {
       const indexOfLast = BlogsPerPage * CurrentPage;
       const indexOfFirst = indexOfLast - BlogsPerPage;
-      setBlogsData(value.records.slice(indexOfFirst, indexOfLast));
-      setTotalPages(value.records.length);
+      value.sort((a,b)=>b.data.date-a.data.date)
+      setBlogsData(value.slice(indexOfFirst, indexOfLast));
+      setTotalPages(value.length);
     }
   }, [value, CurrentPage]);
-  console.log(BlogsData);
+  // console.log(BlogsData);
   const handelPageUp = () => {
     if (CurrentPage != Math.ceil(TotalPages / BlogsPerPage)) {
       setCurrentPage(CurrentPage + 1);
@@ -34,6 +37,9 @@ export default function Blogs() {
       <h4 className="text-3xl text-center font-bold underline">
         Our Latest Blogs
       </h4>
+      <div className="w-full flex justify-end"> 
+        <button className="btn btn-primary w-32 mx-5" onClick={()=>navigate("/Home/Blog/Create")}>Create</button>
+      </div>
       {error && (
         <div role="alert" className="alert alert-error my-5 ">
           <svg
@@ -62,7 +68,7 @@ export default function Blogs() {
           <div className="mx-3 my-7 h-[80vh] lg:h-[50vh] flex justify-evenly flex-wrap">
             {BlogsData.map((obj) => (
               <div
-                className="w-[40%] h-[45%] lg:w-1/5 lg:h-full  rounded-tr-xl shadow-xl shadow-gray-500 bg-gray-300"
+                className="w-[40%] h-[45%] lg:w-1/5 lg:h-full  rounded-tr-xl shadow-xl shadow-gray-400 bg-gray-300"
                 key={obj.id}
               >
                 <Link to={`/Home/Blog/${obj.id}`}>

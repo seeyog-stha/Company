@@ -10,6 +10,7 @@ import Contact from "../Pages/Contact";
 import About from "../Pages/About";
 import Hero from "../Pages/Hero";
 import BlogPage from "./component/BlogPage";
+import CreateBlogs from "./component/CreateBlogs";
 function App() {
   const [theme, setTheme] = useState("light");
 
@@ -20,7 +21,7 @@ function App() {
         <BrowserRouter basename="Company">
           <Routes>
             <Route path="/" element={<Hero />} />
-            <Route element={<Layout setTheme={setTheme}></Layout>}>
+            <Route element={<Layout  setTheme={setTheme} theme={theme}></Layout>}>
               <Route path="/Home" element={<Home />}></Route>
               <Route path="/Staff" element={<StaffPage />}></Route>
               <Route path="/Contact" element={<Contact />} />
@@ -30,6 +31,7 @@ function App() {
             <Route path="/Staff/Create" element={<Create></Create>}></Route>
             <Route path="/Staff/Update/:id" element={<Update></Update>}></Route>
             <Route path="/Home/Blog/:id" element={<BlogPage/>}/>
+            <Route path="/Home/Blog/Create" element={<CreateBlogs/>}/>
           </Routes>
         </BrowserRouter>
       </div>
